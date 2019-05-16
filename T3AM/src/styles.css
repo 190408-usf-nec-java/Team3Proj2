@@ -1,0 +1,13 @@
+/* You can add global styles to this file, and also import other style files */
+*{
+    font-family: sans-serif;
+    color: white;
+}
+
+body{
+    /*background: url("https://i.pinimg.com/originals/b0/83/2b/b0832bbfe369ba14a95245b71f57c715.jpg") no-repeat;*/
+    /* background: url("http://wallpapersdsc.net/wp-content/uploads/2016/09/Food-HD-Desktop.jpg") no-repeat; */
+    background: url("https://cdn.wallpapersafari.com/84/52/7BbTQc.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+}
