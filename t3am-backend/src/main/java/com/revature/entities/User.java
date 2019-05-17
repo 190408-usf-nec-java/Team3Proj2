@@ -32,22 +32,23 @@ public class User {
 
 	@Column(nullable = false, length = 64)
 	private String hashedpass;
-	
-	@Column(nullable = false ,  length = 10)
+
+	@Column(nullable = false, length = 10)
 	private String salt;
-	
-	@Column(nullable = false , length = 320)
+
+	@Column(nullable = false, length = 320)
 	private String email;
-	
+
 	@ManyToMany
-	@JoinTable(name ="user_recipes" , joinColumns = {@JoinColumn(name = "user_id")} , inverseJoinColumns = {@JoinColumn(name = "recipe_id")})
+	@JoinTable(name = "user_recipes", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = {
+			@JoinColumn(name = "recipe_id") })
 	private List<Recipe> recipes;
-	
+
 	@ManyToMany
-	@JoinTable(name ="user_comments" , joinColumns = {@JoinColumn(name = "user_id")} , inverseJoinColumns = {@JoinColumn(name = "comment_id")})
+	@JoinTable(name = "user_comments", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = {
+			@JoinColumn(name = "comment_id") })
 	private List<Comment> comments;
-	
-	
+
 	public int getId() {
 		return id;
 	}
@@ -103,8 +104,6 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	
 
 	public List<Recipe> getRecipes() {
 		return recipes;
@@ -211,8 +210,6 @@ public class User {
 		this.recipes = recipes;
 		this.comments = comments;
 	}
-
-	
 
 	public User() {
 		super();

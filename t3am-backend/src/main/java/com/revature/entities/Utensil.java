@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
 @Entity
 @Table(name = "utensil")
 public class Utensil {
@@ -19,7 +20,7 @@ public class Utensil {
 	private int id;
 	@Column(nullable = false)
 	private String name;
-	
+
 	@ManyToMany
 	@JoinTable(name = "recipes_utensils", joinColumns = { @JoinColumn(name = "utensil_id") }, inverseJoinColumns = {
 			@JoinColumn(name = "recipe_id") })

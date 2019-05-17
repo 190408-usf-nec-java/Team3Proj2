@@ -22,31 +22,30 @@ public class Recipe {
 	private String name;
 	@Column(nullable = false)
 	private String directions;
-	
+
 	@ManyToMany
 	@JoinTable(name = "restaurants_recipes", joinColumns = { @JoinColumn(name = "recipe_id") }, inverseJoinColumns = {
 			@JoinColumn(name = "restaurant_id") })
 	private List<Restaurant> restaurants;
-	
-	
+
 	@ManyToMany
-	@JoinTable(name ="user_recipes" , joinColumns = {@JoinColumn(name = "recipe_id")} , inverseJoinColumns = {@JoinColumn(name = "user_id")})
+	@JoinTable(name = "user_recipes", joinColumns = { @JoinColumn(name = "recipe_id") }, inverseJoinColumns = {
+			@JoinColumn(name = "user_id") })
 	private List<User> users;
-	
+
 	@ManyToMany
 	@JoinTable(name = "recipes_comments", joinColumns = { @JoinColumn(name = "recipe_id") }, inverseJoinColumns = {
 			@JoinColumn(name = "comment_id") })
 	private List<Comment> comments;
-	
-	
 
 	@ManyToMany
 	@JoinTable(name = "recipes_utensils", joinColumns = { @JoinColumn(name = "recipe_id") }, inverseJoinColumns = {
 			@JoinColumn(name = "utensil_id") })
 	private List<Utensil> utensils;
-	
+
 	@ManyToMany
-	@JoinTable(name ="recipes_ingredients" , joinColumns = {@JoinColumn(name = "recipe_id")} , inverseJoinColumns = {@JoinColumn(name = "ingredient_id")})
+	@JoinTable(name = "recipes_ingredients", joinColumns = { @JoinColumn(name = "recipe_id") }, inverseJoinColumns = {
+			@JoinColumn(name = "ingredient_id") })
 	private List<Ingredient> ingredients;
 
 	public int getId() {
@@ -201,8 +200,5 @@ public class Recipe {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	
-
 
 }

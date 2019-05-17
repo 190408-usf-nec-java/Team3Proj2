@@ -12,25 +12,20 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-
-
 @Entity
 @Table(name = "ingredient")
 public class Ingredient {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	@Column(nullable = false)
 	private String name;
-	
-	
+
 	@ManyToMany
-	@JoinTable(name ="recipes_ingredients" , joinColumns = {@JoinColumn(name = "ingredient_id")} , inverseJoinColumns = {@JoinColumn(name = "recipe_id")})
+	@JoinTable(name = "recipes_ingredients", joinColumns = {
+			@JoinColumn(name = "ingredient_id") }, inverseJoinColumns = { @JoinColumn(name = "recipe_id") })
 	private List<Recipe> recipes;
-	
-	
-	
-	
+
 }

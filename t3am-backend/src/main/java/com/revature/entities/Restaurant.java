@@ -17,53 +17,44 @@ import javax.persistence.Table;
 public class Restaurant {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-  private int id;
-	
+	private int id;
+
 	@Column(nullable = false)
 	private String description;
-	
-	
-	@ManyToMany
-	@JoinTable(name = "restaurants_recipes", joinColumns = { @JoinColumn(name = "restaurant_id") }, inverseJoinColumns = {
-			@JoinColumn(name = "recipe_id") })
-	private List<Recipe> recipes;
 
+	@ManyToMany
+	@JoinTable(name = "restaurants_recipes", joinColumns = {
+			@JoinColumn(name = "restaurant_id") }, inverseJoinColumns = { @JoinColumn(name = "recipe_id") })
+	private List<Recipe> recipes;
 
 	public int getId() {
 		return id;
 	}
 
-
 	public void setId(int id) {
 		this.id = id;
 	}
-
 
 	public String getDescription() {
 		return description;
 	}
 
-
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
 
 	public List<Recipe> getRecipes() {
 		return recipes;
 	}
 
-
 	public void setRecipes(List<Recipe> recipes) {
 		this.recipes = recipes;
 	}
-
 
 	@Override
 	public String toString() {
 		return "Restaurant [id=" + id + ", description=" + description + ", recipes=" + recipes + "]";
 	}
-
 
 	@Override
 	public int hashCode() {
@@ -74,7 +65,6 @@ public class Restaurant {
 		result = prime * result + ((recipes == null) ? 0 : recipes.hashCode());
 		return result;
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -100,7 +90,6 @@ public class Restaurant {
 		return true;
 	}
 
-
 	public Restaurant(int id, String description, List<Recipe> recipes) {
 		super();
 		this.id = id;
@@ -108,12 +97,9 @@ public class Restaurant {
 		this.recipes = recipes;
 	}
 
-
 	public Restaurant() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
-	
 
 }
