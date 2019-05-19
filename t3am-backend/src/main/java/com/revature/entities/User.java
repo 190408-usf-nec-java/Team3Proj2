@@ -14,7 +14,6 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "user")
-
 public class User {
 
 	@Id
@@ -36,7 +35,7 @@ public class User {
 	@Column(nullable = false, length = 10)
 	private String salt;
 
-	@Column(nullable = false, length = 320)
+	@Column(nullable = false)
 	private String email;
 
 	@ManyToMany
@@ -122,12 +121,6 @@ public class User {
 	}
 
 	@Override
-	public String toString() {
-		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", userName=" + userName
-				+ ", hashedpass=" + hashedpass + ", salt=" + salt + ", email=" + email + "]";
-	}
-
-	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
@@ -195,6 +188,13 @@ public class User {
 		} else if (!userName.equals(other.userName))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", userName=" + userName
+				+ ", hashedpass=" + hashedpass + ", salt=" + salt + ", email=" + email + ", recipes=" + recipes
+				+ ", comments=" + comments + "]";
 	}
 
 	public User(int id, String firstName, String lastName, String userName, String hashedpass, String salt,
