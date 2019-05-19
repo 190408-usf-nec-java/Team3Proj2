@@ -13,7 +13,13 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.revature.entities.Comment;
+import com.revature.entities.Contain;
+import com.revature.entities.Ingredient;
+import com.revature.entities.Recipe;
+import com.revature.entities.Restaurant;
 import com.revature.entities.User;
+import com.revature.entities.Utensil;
 
 @Configuration
 @EnableTransactionManagement
@@ -25,16 +31,17 @@ public class HibernateConfig {
 	@Value("${JDBC_LOGIN}")
 	String role;
 
+	
 	@Bean
 	@Inject
 	public LocalSessionFactoryBean getSessionFactory(DataSource dataSource) {
 		System.out.println("Configuring SessionFactory bean");
 		LocalSessionFactoryBean factoryBean = new LocalSessionFactoryBean();
 		factoryBean.setConfigLocation(new ClassPathResource("hibernate.cfg.xml"));
-
+		
 		// Set annotated classes
-		factoryBean.setAnnotatedClasses(User.class);
-
+		
+		factoryBean.setAnnotatedClasses(User.class, Contain.class, Ingredient.class, Recipe.class, Restaurant.class, Comment.class, Utensil.class);
 		factoryBean.setDataSource(getDataSource());
 		return factoryBean;
 	}
