@@ -5,11 +5,13 @@ import javax.inject.Inject;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.HttpClientErrorException;
 
 import com.revature.entities.Restaurant;
+@Repository
 
 public class RestaurantRepository {
 

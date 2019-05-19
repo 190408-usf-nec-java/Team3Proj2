@@ -2,8 +2,11 @@ package com.services.services;
 
 import javax.inject.Inject;
 
+import org.springframework.stereotype.Service;
+
 import com.revature.entities.Restaurant;
 import com.revature.repositories.RestaurantRepository;
+@Service
 
 public class RestaurantServices {
 	RestaurantRepository restaurantRepository;

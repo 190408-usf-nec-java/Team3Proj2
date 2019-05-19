@@ -2,8 +2,11 @@ package com.services.services;
 
 import javax.inject.Inject;
 
+import org.springframework.stereotype.Service;
+
 import com.revature.entities.Utensil;
 import com.revature.repositories.UtensilRepository;
+@Service
 
 public class UtensilServices {
 	

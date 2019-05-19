@@ -2,18 +2,21 @@ package com.revature.entities;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "recipe")
+@Table(name = "recipes")
 public class Recipe {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,10 +46,9 @@ public class Recipe {
 			@JoinColumn(name = "utensil_id") })
 	private List<Utensil> utensils;
 
-	@ManyToMany
-	@JoinTable(name = "recipes_ingredients", joinColumns = { @JoinColumn(name = "recipe_id") }, inverseJoinColumns = {
-			@JoinColumn(name = "ingredient_id") })
-	private List<Ingredient> ingredients;
+	@OneToMany (fetch=FetchType.LAZY, cascade = {CascadeType.MERGE,CascadeType.DETACH})
+	@JoinColumn(name = "recipeC_id")
+	private List<Contain> contains;
 
 	public int getId() {
 		return id;
@@ -104,19 +106,21 @@ public class Recipe {
 		this.utensils = utensils;
 	}
 
-	public List<Ingredient> getIngredients() {
-		return ingredients;
-	}
-
-	public void setIngredients(List<Ingredient> ingredients) {
-		this.ingredients = ingredients;
-	}
+	
 
 	@Override
 	public String toString() {
 		return "Recipe [id=" + id + ", name=" + name + ", directions=" + directions + ", restaurants=" + restaurants
-				+ ", users=" + users + ", comments=" + comments + ", utensils=" + utensils + ", ingredients="
-				+ ingredients + "]";
+				+ ", users=" + users + ", comments=" + comments + ", utensils=" + utensils + ", contains=" + contains
+				+ "]";
+	}
+
+	public List<Contain> getContains() {
+		return contains;
+	}
+
+	public void setContains(List<Contain> contains) {
+		this.contains = contains;
 	}
 
 	@Override
@@ -124,9 +128,9 @@ public class Recipe {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((comments == null) ? 0 : comments.hashCode());
+		result = prime * result + ((contains == null) ? 0 : contains.hashCode());
 		result = prime * result + ((directions == null) ? 0 : directions.hashCode());
 		result = prime * result + id;
-		result = prime * result + ((ingredients == null) ? 0 : ingredients.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((restaurants == null) ? 0 : restaurants.hashCode());
 		result = prime * result + ((users == null) ? 0 : users.hashCode());
@@ -148,17 +152,17 @@ public class Recipe {
 				return false;
 		} else if (!comments.equals(other.comments))
 			return false;
+		if (contains == null) {
+			if (other.contains != null)
+				return false;
+		} else if (!contains.equals(other.contains))
+			return false;
 		if (directions == null) {
 			if (other.directions != null)
 				return false;
 		} else if (!directions.equals(other.directions))
 			return false;
 		if (id != other.id)
-			return false;
-		if (ingredients == null) {
-			if (other.ingredients != null)
-				return false;
-		} else if (!ingredients.equals(other.ingredients))
 			return false;
 		if (name == null) {
 			if (other.name != null)
@@ -184,7 +188,7 @@ public class Recipe {
 	}
 
 	public Recipe(int id, String name, String directions, List<Restaurant> restaurants, List<User> users,
-			List<Comment> comments, List<Utensil> utensils, List<Ingredient> ingredients) {
+			List<Comment> comments, List<Utensil> utensils, List<Contain> contains) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -193,12 +197,17 @@ public class Recipe {
 		this.users = users;
 		this.comments = comments;
 		this.utensils = utensils;
-		this.ingredients = ingredients;
+		this.contains = contains;
 	}
 
 	public Recipe() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
+
+	
+
+	
 
 }

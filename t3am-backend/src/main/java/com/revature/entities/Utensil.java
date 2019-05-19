@@ -13,7 +13,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "utensil")
+@Table(name = "utensils")
 public class Utensil {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

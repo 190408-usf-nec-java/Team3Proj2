@@ -2,8 +2,11 @@ package com.services.services;
 
 import javax.inject.Inject;
 
+import org.springframework.stereotype.Service;
+
 import com.revature.entities.Recipe;
 import com.revature.repositories.RecipeRepository;
+@Service
 
 public class RecipeServices {
 	

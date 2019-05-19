@@ -2,13 +2,15 @@ package com.services.services;
 
 import javax.inject.Inject;
 
-import com.revature.entities.Comment;
+import org.springframework.stereotype.Service;
+
 import com.revature.entities.Comment;
 import com.revature.repositories.CommentRepository;
+@Service
 
 public class CommentServices {
 	
-
+	
 	CommentRepository commentRepository;
 
 	@Inject

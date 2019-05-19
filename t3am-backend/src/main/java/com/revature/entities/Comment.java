@@ -13,7 +13,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "comment")
+@Table(name = "comments")
 public class Comment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,7 +23,7 @@ public class Comment {
 	private String Content;
 
 	@ManyToMany
-	@JoinTable(name = "users_comments", joinColumns = { @JoinColumn(name = "comment_id") }, inverseJoinColumns = {
+	@JoinTable(name = "user_comments", joinColumns = { @JoinColumn(name = "comment_id") }, inverseJoinColumns = {
 			@JoinColumn(name = "user_id") })
 	private List<User> users;
 

@@ -18,39 +18,40 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.HttpClientErrorException;
 
-import com.revature.entities.Comment;
-import com.services.services.CommentServices;
+import com.revature.entities.Contain;
+import com.services.services.ContainServices;
 @RestController // All methods infer @ResponseBody
-@RequestMapping("comment")
-public class CommentController {
-private CommentServices commentService;
+@RequestMapping("contain")
+public class ContainController {
+	
+private ContainServices containService;
 	
 	@Inject
-	public CommentController(CommentServices commentService) {
+	public ContainController(ContainServices containService) {
 		super();
-		this.commentService = commentService;
+		this.containService = containService;
 	}
 
-	@GetMapping("")
-	public Comment getById(@PathVariable int id) {
-		return Optional.ofNullable(this.commentService.getById(id))
+	@GetMapping("/{id}")
+	public Contain getById(@PathVariable int id) {
+		return Optional.ofNullable(this.containService.getById(id))
 			.orElseThrow(() -> new HttpClientErrorException(HttpStatus.NOT_FOUND));
 	}
 	
 	@PostMapping("")
 	@ResponseStatus(HttpStatus.CREATED)
-	public Comment createComment(@RequestBody Comment comment) {
-		return this.commentService.create(comment);
+	public Contain createContain(@RequestBody Contain contain) {
+		return this.containService.create(contain);
 	}
 	
 	@PutMapping("")
-	public Comment updateComment(@RequestBody Comment comment) {
-		return this.commentService.update(comment);
+	public Contain updateContain(@RequestBody Contain contain) {
+		return this.containService.update(contain);
 	}
 	
-	@DeleteMapping("")
-	public Comment deleteComment(@PathVariable int id) {
-		return this.commentService.deleteById(id);
+	@DeleteMapping("/{id}")
+	public Contain deleteContain(@PathVariable int id) {
+		return this.containService.deleteById(id);
 	}
 	
 	@ExceptionHandler(HttpClientErrorException.class)

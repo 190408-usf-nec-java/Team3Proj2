@@ -10,46 +10,48 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.HttpClientErrorException;
 
-import com.revature.entities.Utensil;
+import com.revature.entities.Contain;
 @Repository
 
-public class UtensilRepository {
-
+public class ContainRepository {
+	
 	SessionFactory sf;
 
 	@Inject
-	public UtensilRepository(SessionFactory sf) {
+	public ContainRepository(SessionFactory sf) {
 		this.sf = sf;
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
-	public Utensil getById(int id) {
+	public Contain getById(int id) {
 		Session session = sf.getCurrentSession();
-		return session.get(Utensil.class, id);
+		return session.get(Contain.class, id);
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
-	public Utensil create(Utensil utensil) {
+	public Contain create(Contain contain) {
 		Session session = sf.getCurrentSession();
-		session.save(utensil);
-		return utensil;
+		session.save(contain);
+		return contain;
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
-	public Utensil update(Utensil utensil) {
+	public Contain update(Contain contain) {
 		Session session = sf.getCurrentSession();
-		session.merge(utensil);
-		return utensil;
+		session.merge(contain);
+		return contain;
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
-	public Utensil deleteById(int id) {
+	public Contain deleteById(int id) {
 		Session session = sf.getCurrentSession();
-		Utensil utensil = session.get(Utensil.class, id);
-		if (utensil == null)
+		Contain contain = session.get(Contain.class, id);
+		if (contain == null)
 			throw new HttpClientErrorException(HttpStatus.NOT_FOUND);
-		session.delete(utensil);
-		return utensil;
+		session.delete(contain);
+		return contain;
 
 	}
+
+
 }
