@@ -2,8 +2,7 @@ package com.revature.controllers;
 
 import java.util.Optional;
 
-import javax.inject.Inject;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -23,14 +22,15 @@ import com.revature.services.IngredientServices;
 @RestController // All methods infer @ResponseBody
 @RequestMapping("ingredient")
 public class IngredientController {
+	@Autowired
 	private IngredientServices ingredientService;
 
-	
+	/*
 	@Inject
 	public IngredientController(IngredientServices ingredientService) {
 		super();
 		this.ingredientService = ingredientService;
-	}
+	}*/
 
 	@GetMapping("/{id}")
 	public Ingredient getById(@PathVariable int id) {

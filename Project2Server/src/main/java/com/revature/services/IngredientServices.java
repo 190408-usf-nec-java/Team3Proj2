@@ -1,7 +1,6 @@
 package com.revature.services;
 
-import javax.inject.Inject;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.revature.entities.Ingredient;
@@ -9,13 +8,14 @@ import com.revature.repositories.IngredientRepository;
 @Service
 public class IngredientServices {
 
+	@Autowired
 	IngredientRepository ingredientRepository;
 
-	@Inject
+	/*@Inject
 	public IngredientServices(IngredientRepository ingredientRepository) {
 		super();
 		this.ingredientRepository = ingredientRepository;
-	}
+	}*/
 
 	public Ingredient getById(int id) {
 		return this.ingredientRepository.getById(id);

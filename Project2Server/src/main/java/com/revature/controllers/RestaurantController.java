@@ -2,8 +2,7 @@ package com.revature.controllers;
 
 import java.util.Optional;
 
-import javax.inject.Inject;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -23,14 +22,14 @@ import com.revature.services.RestaurantServices;
 @RestController // All methods infer @ResponseBody
 @RequestMapping("restaurant")
 public class RestaurantController {
-	
+	@Autowired
 private RestaurantServices restaurantService;
-	
+	/*
 	@Inject
 	public RestaurantController(RestaurantServices restaurantService) {
 		super();
 		this.restaurantService = restaurantService;
-	}
+	}*/
 
 	@GetMapping("/{id}")
 	public Restaurant getById(@PathVariable int id) {

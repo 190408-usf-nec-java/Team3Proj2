@@ -25,8 +25,11 @@ public class Ingredient {
 	private String name;
 
 
-	@OneToMany (fetch=FetchType.LAZY, cascade = {CascadeType.MERGE,CascadeType.DETACH})
-	@JoinColumn(name = "ingredientC_id")
+	@OneToMany (
+			mappedBy= "ingredients",
+			cascade = CascadeType.ALL,
+			orphanRemoval = true
+	)
 	private List<Contain> contains;
 
 

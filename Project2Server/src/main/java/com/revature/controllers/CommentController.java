@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import javax.inject.Inject;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -23,13 +24,14 @@ import com.revature.services.CommentServices;
 @RestController // All methods infer @ResponseBody
 @RequestMapping("comment")
 public class CommentController {
+	@Autowired
 	private CommentServices commentService;
 
-	@Inject
+	/*@Inject
 	public CommentController(CommentServices commentService) {
 		super();
 		this.commentService = commentService;
-	}
+	}*/
 
 	@GetMapping("")
 	public Comment getById(@PathVariable int id) {

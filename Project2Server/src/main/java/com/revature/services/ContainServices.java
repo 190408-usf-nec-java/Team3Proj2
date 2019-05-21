@@ -1,18 +1,20 @@
 package com.revature.services;
 
-import javax.inject.Inject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.revature.entities.Contain;
 import com.revature.repositories.ContainRepository;
-
+@Service
 public class ContainServices {
+	@Autowired
 	ContainRepository containRepository;
 
-	@Inject
+	/*@Inject
 	public ContainServices(ContainRepository containRepository) {
 		super();
 		this.containRepository = containRepository;
-	}
+	}*/
 
 	public Contain getById(int id) {
 		return this.containRepository.getById(id);

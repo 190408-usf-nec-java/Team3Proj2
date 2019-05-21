@@ -2,8 +2,7 @@ package com.revature.controllers;
 
 import java.util.Optional;
 
-import javax.inject.Inject;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -23,13 +22,15 @@ import com.revature.services.UserServices;
 @RestController // All methods infer @ResponseBody
 @RequestMapping("users")
 public class UserController {
+	@Autowired
 private UserServices userService;
 	
+	/*
 	@Inject
 	public UserController(UserServices userService) {
 		super();
 		this.userService = userService;
-	}
+	}*/
 
 	@GetMapping("/{id}")
 	public User getById(@PathVariable int id) {

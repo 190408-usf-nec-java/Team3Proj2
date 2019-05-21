@@ -2,8 +2,7 @@ package com.revature.controllers;
 
 import java.util.Optional;
 
-import javax.inject.Inject;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -23,15 +22,15 @@ import com.revature.services.ContainServices;
 @RestController // All methods infer @ResponseBody
 @RequestMapping("contain")
 public class ContainController {
-	
+	@Autowired
 	private ContainServices containService;
 
 	
-	@Inject
+	/*@Inject
 	public ContainController(ContainServices containService) {
 		super();
 		this.containService = containService;
-	}
+	}*/
 
 	@GetMapping("/{id}")
 	public Contain getById(@PathVariable int id) {

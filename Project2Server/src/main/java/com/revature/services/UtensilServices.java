@@ -1,20 +1,20 @@
 package com.revature.services;
 
-import javax.inject.Inject;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.revature.entities.Utensil;
 import com.revature.repositories.UtensilRepository;
 @Service
 public class UtensilServices {
+	@Autowired
 	UtensilRepository utensilRepository;
 
-	@Inject
+	/*@Inject
 	public UtensilServices(UtensilRepository utensilRepository) {
 		super();
 		this.utensilRepository = utensilRepository;
-	}
+	}*/
 
 	public Utensil getById(int id) {
 		return this.utensilRepository.getById(id);

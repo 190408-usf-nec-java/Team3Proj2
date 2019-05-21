@@ -15,10 +15,12 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.revature.entities.Comment;
+import com.revature.entities.Contain;
 import com.revature.entities.Ingredient;
 import com.revature.entities.Recipe;
 import com.revature.entities.Restaurant;
 import com.revature.entities.User;
+import com.revature.entities.Utensil;
 
 	@Configuration
 	@EnableTransactionManagement
@@ -38,7 +40,7 @@ import com.revature.entities.User;
 	        LocalSessionFactoryBean factoryBean = new LocalSessionFactoryBean();
 	        factoryBean.setConfigLocation(new ClassPathResource("hibernate.cfg.xml"));
 	        
-	        factoryBean.setAnnotatedClasses(User.class, Recipe.class, Restaurant.class, Ingredient.class, Comment.class);
+	        factoryBean.setAnnotatedClasses(User.class, Recipe.class, Restaurant.class, Ingredient.class, Comment.class, Utensil.class,Contain.class);
 	        
 	        factoryBean.setDataSource(getDataSource());
 	        

@@ -1,21 +1,20 @@
 package com.revature.services;
 
-import javax.inject.Inject;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.revature.entities.Recipe;
 import com.revature.repositories.RecipeRepository;
 @Service
 public class RecipeServices {
-	
+	@Autowired
 	RecipeRepository recipeRepository;
-
-	@Inject
+	
+	/*@Inject
 	public RecipeServices(RecipeRepository recipeRepository) {
 		super();
 		this.recipeRepository = recipeRepository;
-	}
+	}*/
 
 	public Recipe getById(int id) {
 		return this.recipeRepository.getById(id);

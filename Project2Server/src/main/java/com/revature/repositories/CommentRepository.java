@@ -1,9 +1,8 @@
 package com.revature.repositories;
 
-import javax.inject.Inject;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
@@ -13,13 +12,14 @@ import org.springframework.web.client.HttpClientErrorException;
 import com.revature.entities.Comment;
 @Repository
 public class CommentRepository {
-
+	@Autowired
 	SessionFactory sf;
-
+	
+	/*
 	@Inject
 	public CommentRepository(SessionFactory sf) {
 		this.sf = sf;
-	}
+	}*/
 
 	@Transactional(propagation = Propagation.REQUIRED)
 	public Comment getById(int id) {
