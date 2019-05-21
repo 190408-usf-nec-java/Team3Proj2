@@ -1,0 +1,60 @@
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>  
+<body ng-app="">
+<nav>
+    <a routerLink="/home" >Home</a>
+    <a routerLink="/signup" class="active">Signup</a>    
+    <a routerLink="/login">Login</a>
+    <a routerLink="/search">Search</a> 
+    <a routerLink="/profile">Profile</a>            
+</nav>
+
+<div class= "content">
+    <div class="form-box">
+        <div class ="sign-box d-flex flex-column">
+            <p *ngIf="lastStatus === 400">Username or password is incorrect.</p>
+            <p *ngIf="lastStatus === 500">Unknown server error occurred.</p>
+            <p *ngIf="lastStatus === 0">Server unreachable.</p>
+    
+            <h1 class="h1">Signup</h1>
+
+            <form name="signupForm">    
+            
+            <div class="textbox">
+                    <i class="fas fa-signature" aria-hidden="true"></i>
+                <input type="text" placeholder="First Name" name="fname" required [(ngModel)]="firstname" >
+            </div>
+
+            <div class="textbox">
+                    <i class="fas fa-signature" aria-hidden="true"></i>
+                <input type="text" placeholder="Last Name" name="lname" required [(ngModel)]="lastname"> 
+            </div>
+
+            <div class="textbox">
+                <i class="fas fa-envelope" aria-hidden="true"></i>
+                <input type="email" placeholder="Email" name="email" required [(ngModel)]="email">
+            </div>    
+
+            <div class="textbox">
+                    <i class="fas fa-mask" aria-hidden="true"></i>
+                <input type="text" placeholder="Username" name="username" required [(ngModel)]="username" [className]="showUsernameValidation()">
+            </div>
+    
+            <div class="textbox">
+                <i class="fas fa-lock" aria-hidden="true"></i>
+                <input type="password" placeholder="Password" name="password" (blur)="confimPassword()" required [(ngModel)]="password" [className]="showPasswordValidation()">
+            </div>
+            
+            <div class="textbox">
+                <i class="fas fa-lock" aria-hidden="true"></i>
+                <input type="password" placeholder=" Confirm Password" (blur)="confimPassword()" name="password2" required [(ngModel)]="password2" [className]="showPasswordValidation()">
+            </div>
+        
+            <input class="btn" type="submit" name="submit"  (click)="submit()" value="Signup">
+            </form>
+
+            <a routerLink="/login">Already have an account, Log in</a>
+
+        </div>
+    </div>
+</div>
+</body>
