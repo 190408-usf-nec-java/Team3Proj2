@@ -26,7 +26,7 @@ public class User {
 	@Column(nullable = false)
 	private String lastName;
 
-	@Column(nullable = false)
+	@Column(nullable = false, unique = true)
 	private String userName;
 
 	@Column(nullable = false, length = 64)
@@ -35,7 +35,7 @@ public class User {
 	@Column(nullable = false, length = 10)
 	private String salt;
 
-	@Column(nullable = false)
+	@Column(nullable = false, unique = true)
 	private String email;
 	
 	@ManyToMany

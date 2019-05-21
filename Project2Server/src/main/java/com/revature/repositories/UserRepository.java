@@ -1,5 +1,7 @@
 package com.revature.repositories;
 
+import javax.xml.ws.http.HTTPException;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +49,20 @@ SessionFactory sf;
 		if (user == null) throw new HttpClientErrorException(HttpStatus.NOT_FOUND);
 		session.delete(user);
 		return user;
+	}
+
+	public User getByUsername(String username) {
+		Session session = sf.getCurrentSession();
+		User u;
+		try
+		{
+			u = (session.createQuery("Select u from User u where u.username = :username",User.class).setParameter("username", username).list()).get(0);
+		}
+		catch(IndexOutOfBoundsException e)
+		{
+			throw new HTTPException(401);
+		}
+		return u;
 	}
 
 

@@ -2,6 +2,8 @@ package com.revature.controllers;
 
 import java.util.Optional;
 
+import javax.xml.ws.http.HTTPException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.HttpClientErrorException;
 
+import com.revature.DTOs.LoginDTO;
 import com.revature.entities.User;
 import com.revature.services.UserServices;
 @RestController // All methods infer @ResponseBody
@@ -38,10 +41,14 @@ private UserServices userService;
 			.orElseThrow(() -> new HttpClientErrorException(HttpStatus.NOT_FOUND));
 	}
 	
-	@PostMapping("")
-	@ResponseStatus(HttpStatus.CREATED)
-	public User createUser(@RequestBody User user) {
-		return this.userService.create(user);
+	@PostMapping("/login/")
+	@ResponseStatus(HttpStatus.ACCEPTED)
+	public void loginUser(@RequestBody LoginDTO credentials) {
+		if (!userService.login(credentials.getUsername(),credentials.getPassword()))
+		{
+			throw new HTTPException(401);
+		}
+		
 	}
 	
 	@PutMapping("")
