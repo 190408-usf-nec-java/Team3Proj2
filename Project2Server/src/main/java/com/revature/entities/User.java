@@ -32,7 +32,7 @@ public class User {
 	@Column(nullable = false, length = 64)
 	private String hashedpass;
 
-	@Column(nullable = false, length = 10)
+	@Column(nullable = false, length = 18)
 	private String salt;
 
 	@Column(nullable = false, unique = true)
