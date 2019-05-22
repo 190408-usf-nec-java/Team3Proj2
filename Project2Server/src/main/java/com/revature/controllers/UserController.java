@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.HttpClientErrorException;
 
 import com.revature.DTOs.LoginDTO;
+import com.revature.DTOs.UserDTO;
 import com.revature.entities.User;
 import com.revature.services.UserServices;
 @RestController // All methods infer @ResponseBody
@@ -44,11 +45,17 @@ private UserServices userService;
 	@PostMapping("/login/")
 	@ResponseStatus(HttpStatus.ACCEPTED)
 	public void loginUser(@RequestBody LoginDTO credentials) {
-		if (!userService.login(credentials.getUsername(),credentials.getPassword()))
+		if (!this.userService.login(credentials.getUsername(),credentials.getPassword()))
 		{
 			throw new HTTPException(401);
 		}
 		
+	}
+	
+	@PostMapping("/signup/")
+	@ResponseStatus(HttpStatus.CREATED)
+	public void signUpUser(@RequestBody UserDTO user) {
+		this.userService.signUp(user);
 	}
 	
 	@PutMapping("")
