@@ -178,18 +178,15 @@ public class User {
 		return true;
 	}
 
-	public User(int id, String firstName, String lastName, String userName, String hashedpass, String salt,
-			String email, List<Recipe> recipes, List<Comment> comments) {
+	public User(String firstName, String lastName, String userName, String hashedpass, String salt,
+			String email) {
 		super();
-		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.userName = userName;
 		this.hashedpass = hashedpass;
 		this.salt = salt;
 		this.email = email;
-		this.recipes = recipes;
-		this.comments = comments;
 	}
 
 	public User() {
