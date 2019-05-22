@@ -51,12 +51,13 @@ SessionFactory sf;
 		return user;
 	}
 
+	@Transactional(propagation = Propagation.REQUIRED)
 	public User getByUsername(String username) {
 		Session session = sf.getCurrentSession();
 		User u;
 		try
 		{
-			u = (session.createQuery("Select u from User u where u.username = :username",User.class).setParameter("username", username).list()).get(0);
+			u = (session.createQuery("Select u from User u where u.userName = :username",User.class).setParameter("username", username).list()).get(0);
 		}
 		catch(IndexOutOfBoundsException e)
 		{
