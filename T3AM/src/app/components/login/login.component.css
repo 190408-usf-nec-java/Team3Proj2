@@ -1,31 +1,56 @@
 @import "https://use.fontawesome.com/releases/v5.5.0/css/all.css";
-
-
-.login-box{
-    width: 280px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    color: white;
+.content{
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
 }
 
-.login-box h1{
+.form-box{
+    width: 70%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.8;
+    background-color: #949D6A;
+}
+
+nav{
+    display: flex;
+    justify-content: left;
+    background-color: #333;
+  }
+  
+  nav input, nav a {
     float: left;
-    color:  white;
-    font-size: 40px;
-    border-bottom: 6px solid #7D7D7D;
-    margin-bottom: 50px;
-    padding: 13px;
-}
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
 
-.textbox {
+  
+  nav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  nav a.active {
+    background-color: #4CAF50;
+    color: white;
+  }
+
+  .textbox {
     width: 100%;
     overflow: hidden;
     font-size: 20px;
     padding: 8px 0;
     margin: 8px 0;
-    border-bottom: 1px solid #7D7D7D;
+    border-bottom: 1px solid #333;
 }
 
 .textbox i{
@@ -46,10 +71,14 @@
     margin: 0 10px;
 }
 
+.textbox input::-ms-input-placeholder{
+  background-color: #333;
+}
+
 .btn {
     width: 100%;
     background: none;
-    border: 2px solid #7D7D7D;
+    border: 2px solid #333;
     color: white;
     padding: 5px;
     font-size: 18px;
@@ -58,6 +87,7 @@
 }
 
 .btn:hover{
-    background: #7D7D7D;
+    background: #333;
     color: white;
 }
+
