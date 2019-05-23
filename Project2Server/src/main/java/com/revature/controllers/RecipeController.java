@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.HttpClientErrorException;
 
 import com.revature.DTOs.SearchDTO;
-import com.revature.entities.Ingredient;
 import com.revature.entities.Recipe;
 import com.revature.services.RecipeServices;
 @RestController // All methods infer @ResponseBody
@@ -58,15 +57,7 @@ private RecipeServices recipeService;
 		return this.recipeService.create(recipe);
 	}
 	
-	@PutMapping("")
-	public Recipe updateRecipe(@RequestBody Recipe recipe) {
-		return this.recipeService.update(recipe);
-	}
-	
-	@DeleteMapping("/{id}")
-	public Recipe deleteRecipe(@PathVariable int id) {
-		return this.recipeService.deleteById(id);
-	}
+
 	
 	@ExceptionHandler(HttpClientErrorException.class)
 	public ResponseEntity<String> handleClientError(HttpClientErrorException e) {
