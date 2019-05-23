@@ -11,11 +11,11 @@ export class SignupService {
 
   constructor(private httpClient: HttpClient) { }
 
-  signup(firstname: string, lastname: string, email: string, username: string,
+  signup(fname: string, lname: string, email: string, username: string,
     password: string ): void {
       const payload = {
-        firstname: firstname,
-        lastname: lastname,
+        fname: fname,
+        lname: lname,
         email: email,
         username: username,
         password: password
@@ -23,7 +23,7 @@ export class SignupService {
 
       console.log(payload);
 
-      this.httpClient.post('', payload, {
+      this.httpClient.post('http://localhost:8081/users/signup/', payload, {
         observe: 'response'
       }).subscribe(response => {
         console.log('request sent');

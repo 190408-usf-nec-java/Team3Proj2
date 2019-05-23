@@ -22,11 +22,11 @@ export class LoginService {
 
     console.log(payload);
 
-    this.httpClient.post('', payload, {
+    this.httpClient.post('http://localhost:8081/users/login/', payload, {
         observe: 'response'
       }).subscribe(response => {
         console.log('request sent');
-        sessionStorage.setItem('cache', response.body.toString());
+        // sessionStorage.setItem('cache', response.body.toString());
         this.loginStatusSubject.next(200);
       }, err => {
         this.loginStatusSubject.next(err.status);
