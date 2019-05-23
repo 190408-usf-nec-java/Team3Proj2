@@ -42,6 +42,11 @@ public class Recipe {
 		@JoinTable(name = "recipes_comments", joinColumns = { @JoinColumn(name = "recipe_id") }, inverseJoinColumns = {
 				@JoinColumn(name = "comment_id") })
 		private List<Comment> comments;
+		
+		@ManyToMany
+		@JoinTable(name = "recipe_tags", joinColumns = { @JoinColumn(name ="recipe_id")}, inverseJoinColumns = {
+				@JoinColumn(name = "tag_id") })
+		private List<Tag> tags;
 
 		@ManyToMany
 		@JoinTable(name = "recipes_utensils", joinColumns = { @JoinColumn(name = "recipe_id") }, inverseJoinColumns = {
@@ -103,6 +108,14 @@ public class Recipe {
 			this.comments = comments;
 		}
 
+		public List<Tag> getTags() {
+			return tags;
+		}
+
+		public void setTags(List<Tag> tags) {
+			this.tags = tags;
+		}
+
 		public List<Utensil> getUtensils() {
 			return utensils;
 		}
@@ -129,6 +142,7 @@ public class Recipe {
 			result = prime * result + id;
 			result = prime * result + ((name == null) ? 0 : name.hashCode());
 			result = prime * result + ((restaurants == null) ? 0 : restaurants.hashCode());
+			result = prime * result + ((tags == null) ? 0 : tags.hashCode());
 			result = prime * result + ((users == null) ? 0 : users.hashCode());
 			result = prime * result + ((utensils == null) ? 0 : utensils.hashCode());
 			return result;
@@ -170,6 +184,11 @@ public class Recipe {
 					return false;
 			} else if (!restaurants.equals(other.restaurants))
 				return false;
+			if (tags == null) {
+				if (other.tags != null)
+					return false;
+			} else if (!tags.equals(other.tags))
+				return false;
 			if (users == null) {
 				if (other.users != null)
 					return false;
@@ -186,12 +205,12 @@ public class Recipe {
 		@Override
 		public String toString() {
 			return "Recipe [id=" + id + ", name=" + name + ", directions=" + directions + ", restaurants=" + restaurants
-					+ ", users=" + users + ", comments=" + comments + ", utensils=" + utensils + ", contains="
-					+ contains + "]";
+					+ ", users=" + users + ", comments=" + comments + ", tags=" + tags + ", utensils=" + utensils
+					+ ", contains=" + contains + "]";
 		}
 
 		public Recipe(int id, String name, String directions, List<Restaurant> restaurants, List<User> users,
-				List<Comment> comments, List<Utensil> utensils, List<Contain> contains) {
+				List<Comment> comments, List<Tag> tags, List<Utensil> utensils, List<Contain> contains) {
 			super();
 			this.id = id;
 			this.name = name;
@@ -199,6 +218,7 @@ public class Recipe {
 			this.restaurants = restaurants;
 			this.users = users;
 			this.comments = comments;
+			this.tags = tags;
 			this.utensils = utensils;
 			this.contains = contains;
 		}
@@ -207,6 +227,8 @@ public class Recipe {
 			super();
 			// TODO Auto-generated constructor stub
 		}
+
+		
 		
 	
 

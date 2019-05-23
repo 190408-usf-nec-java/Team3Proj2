@@ -45,16 +45,7 @@ private UtensilServices utensilService;
 	public Utensil createUtensil(@RequestBody Utensil utensil) {
 		return this.utensilService.create(utensil);
 	}
-	// hello
-	@PutMapping("")
-	public Utensil updateUtensil(@RequestBody Utensil utensil) {
-		return this.utensilService.update(utensil);
-	}
-	
-	@DeleteMapping("/{id}")
-	public Utensil deleteUtensil(@PathVariable int id) {
-		return this.utensilService.deleteById(id);
-	}
+
 	
 	@ExceptionHandler(HttpClientErrorException.class)
 	public ResponseEntity<String> handleClientError(HttpClientErrorException e) {
