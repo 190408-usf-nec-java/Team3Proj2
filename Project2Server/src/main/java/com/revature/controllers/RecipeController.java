@@ -40,7 +40,7 @@ private RecipeServices recipeService;
 			.orElseThrow(() -> new HttpClientErrorException(HttpStatus.NOT_FOUND));
 	}
 	
-	@GetMapping("/search/")
+	@PostMapping("/search/")
 	public List<Recipe> searchByName(@RequestBody SearchDTO search) {
 		List<Recipe> toRet = this.recipeService.getByName(search.getRecipe());
 		if(toRet == null)
