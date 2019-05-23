@@ -4,12 +4,15 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 import javax.persistence.Table;
 
 @Entity
@@ -23,10 +26,9 @@ public class Comment {
 	@Column(nullable = false)
 	private String Content;
 
-	@ManyToMany
-	@JoinTable(name = "user_comments", joinColumns = { @JoinColumn(name = "comment_id") }, inverseJoinColumns = {
-			@JoinColumn(name = "user_id") })
-	private List<User> users;
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="user_id", nullable=false)
+    private User user;
 
 
 
@@ -61,14 +63,14 @@ public class Comment {
 
 
 
-	public List<User> getUsers() {
-		return users;
+	public User getUser() {
+		return user;
 	}
 
 
 
-	public void setUsers(List<User> users) {
-		this.users = users;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 
@@ -92,7 +94,7 @@ public class Comment {
 		result = prime * result + ((Content == null) ? 0 : Content.hashCode());
 		result = prime * result + id;
 		result = prime * result + ((recipes == null) ? 0 : recipes.hashCode());
-		result = prime * result + ((users == null) ? 0 : users.hashCode());
+		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
 	}
 
@@ -119,10 +121,10 @@ public class Comment {
 				return false;
 		} else if (!recipes.equals(other.recipes))
 			return false;
-		if (users == null) {
-			if (other.users != null)
+		if (user == null) {
+			if (other.user != null)
 				return false;
-		} else if (!users.equals(other.users))
+		} else if (!user.equals(other.user))
 			return false;
 		return true;
 	}
@@ -131,16 +133,15 @@ public class Comment {
 
 	@Override
 	public String toString() {
-		return "Comment [id=" + id + ", Content=" + Content + ", users=" + users + ", recipes=" + recipes + "]";
+		return "Comment [id=" + id + ", Content=" + Content + ", user=" + user + ", recipes=" + recipes + "]";
 	}
 
 
-
-	public Comment(int id, String content, List<User> users, List<Recipe> recipes) {
+	public Comment(int id, String content, User user, List<Recipe> recipes) {
 		super();
 		this.id = id;
 		Content = content;
-		this.users = users;
+		this.user = user;
 		this.recipes = recipes;
 	}
 
