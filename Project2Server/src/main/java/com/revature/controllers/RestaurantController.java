@@ -43,15 +43,6 @@ private RestaurantServices restaurantService;
 		return this.restaurantService.create(restaurant);
 	}
 	
-	@PutMapping("")
-	public Restaurant updateRestaurant(@RequestBody Restaurant restaurant) {
-		return this.restaurantService.update(restaurant);
-	}
-	
-	@DeleteMapping("/{id}")
-	public Restaurant deleteRestaurant(@PathVariable int id) {
-		return this.restaurantService.deleteById(id);
-	}
 	
 	@ExceptionHandler(HttpClientErrorException.class)
 	public ResponseEntity<String> handleClientError(HttpClientErrorException e) {

@@ -51,16 +51,7 @@ public class IngredientController {
 		return this.ingredientService.create(ingredient);
 	}
 	
-	@PutMapping("")
-	public Ingredient updateIngredient(@RequestBody Ingredient ingredient) {
-		return this.ingredientService.update(ingredient);
-	}
-	
-	@DeleteMapping("/{id}")
-	public Ingredient deleteIngredient(@PathVariable int id) {
-		return this.ingredientService.deleteById(id);
-	}
-	
+
 	@ExceptionHandler(HttpClientErrorException.class)
 	public ResponseEntity<String> handleClientError(HttpClientErrorException e) {
 		return ResponseEntity.status(e.getStatusCode()).body(e.getMessage());

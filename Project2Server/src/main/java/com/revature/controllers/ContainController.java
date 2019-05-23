@@ -44,15 +44,7 @@ public class ContainController {
 		return this.containService.create(contain);
 	}
 	
-	@PutMapping("")
-	public Contain updateContain(@RequestBody Contain contain) {
-		return this.containService.update(contain);
-	}
 	
-	@DeleteMapping("/{id}")
-	public Contain deleteContain(@PathVariable int id) {
-		return this.containService.deleteById(id);
-	}
 	
 	@ExceptionHandler(HttpClientErrorException.class)
 	public ResponseEntity<String> handleClientError(HttpClientErrorException e) {
