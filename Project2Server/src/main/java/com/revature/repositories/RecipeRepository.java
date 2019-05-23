@@ -1,5 +1,7 @@
 package com.revature.repositories;
 
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.client.HttpClientErrorException;
 
+import com.revature.entities.Ingredient;
 import com.revature.entities.Recipe;
 @Repository
 public class RecipeRepository {
@@ -49,6 +52,22 @@ public class RecipeRepository {
 		session.delete(recipe);
 		return recipe;
 
+	}
+
+	@Transactional(propagation = Propagation.REQUIRED)
+	public List<Recipe> getByName(String recipe) {
+		Session session = sf.getCurrentSession();
+		List<Recipe> rec;
+		try
+		{
+			rec = session.createQuery("Select r from Recipe r where r.name like :criteria",Recipe.class).setParameter("criteria", '%'+ recipe +'%').list();
+			Recipe r = rec.get(0);
+		}
+		catch(IndexOutOfBoundsException e)
+		{
+			return null;
+		}
+		return rec;
 	}
 
 
