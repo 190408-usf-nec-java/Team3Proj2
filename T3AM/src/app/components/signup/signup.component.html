@@ -1,52 +1,61 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>  
 <body ng-app="">
 <nav>
-        <input id="button" type="button" routerLink="" value="Log Out" (click)="clearStorage()">
-        <a routerLink="/home">Home</a>
-        <a routerLink="/signup" class="active">Signup</a>    
-        <a routerLink="/login">Login</a>
-        <a routerLink="/search">Search</a>            
+    <a routerLink="/home" >Home</a>
+    <a routerLink="/signup" class="active">Signup</a>    
+    <a routerLink="/login">Login</a>
+    <a routerLink="/search">Search</a> 
+    <a routerLink="/profile">Profile</a>  
+    <a routerLink="/about">About</a>           
 </nav>
 
 <div class= "content">
     <div class="form-box">
-            <p *ngIf="lastStatus === 400">Username or password is incorrect.</p>
-            <p *ngIf="lastStatus === 500">Unknown server error occurred.</p>
-            <p *ngIf="lastStatus === 0">Server unreachable.</p>
+        <div class ="sign-box d-flex flex-column">
+
     
-            <form name="login-form">
+            <h1 class="h1">Signup</h1>
+            <a routerLink="/login">Already have an account, Log in</a>
+            <p *ngIf="lastStatus === 400" class="d-flex flex-column">Username or password is incorrect.</p>
+            <p *ngIf="lastStatus === 500" class="d-flex flex-column">Unknown server error occurred.</p>
+            <p *ngIf="lastStatus === 0" class="d-flex flex-column">Server unreachable.</p>
+
+            <form name="signupForm">    
+            
             <div class="textbox">
                     <i class="fas fa-signature" aria-hidden="true"></i>
-                <input type="text" placeholder="First Name" name="fname" required>
+                <input type="text" placeholder="First Name" name="fname" required [(ngModel)]="fname" >
             </div>
 
             <div class="textbox">
                     <i class="fas fa-signature" aria-hidden="true"></i>
-                <input type="text" placeholder="Last Name" name="lname" required>
+                <input type="text" placeholder="Last Name" name="lname" required [(ngModel)]="lname"> 
             </div>
 
             <div class="textbox">
                 <i class="fas fa-envelope" aria-hidden="true"></i>
-                <input type="email" placeholder="Email" name="email" required>
+                <input type="email" placeholder="Email" name="email" required [(ngModel)]="email">
             </div>    
 
             <div class="textbox">
                     <i class="fas fa-mask" aria-hidden="true"></i>
-                <input type="text" placeholder="Username" name="username" required>
+                <input type="text" placeholder="Username" name="username" required [(ngModel)]="username" [className]="showUsernameValidation()">
             </div>
     
             <div class="textbox">
                 <i class="fas fa-lock" aria-hidden="true"></i>
-                <input type="password" placeholder="Password" name="password" required>
+                <input type="password" placeholder="Password" name="password" required [(ngModel)]="password" [className]="showPasswordValidation()">
             </div>
             
             <div class="textbox">
                 <i class="fas fa-lock" aria-hidden="true"></i>
-                <input type="password" placeholder=" Confirm Password" (blur)="confimPassword()" name="password2" required>
+                <input type="password" placeholder=" Confirm Password" name="password2" required [(ngModel)]="password2" [className]="showPasswordValidation2()">
             </div>
         
-            <input class="btn" type="submit" name="submit"  (click)="submit()" value="Signup">
+            <input class="btn" type="submit" name="submit" [disabled]="!formValidation()"  (click)="submit()" value="Signup">
             </form>
+
+        </div>
     </div>
 </div>
 </body>
