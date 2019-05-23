@@ -21,6 +21,7 @@ import org.springframework.web.client.HttpClientErrorException;
 
 import com.revature.DTOs.LoginDTO;
 import com.revature.DTOs.UserDTO;
+import com.revature.entities.Token;
 import com.revature.entities.User;
 import com.revature.services.UserServices;
 @RestController // All methods infer @ResponseBody
@@ -44,11 +45,13 @@ private UserServices userService;
 	
 	@PostMapping("/login/")
 	@ResponseStatus(HttpStatus.ACCEPTED)
-	public void loginUser(@RequestBody LoginDTO credentials) {
-		if (!this.userService.login(credentials.getUsername(),credentials.getPassword()))
+	public Token loginUser(@RequestBody LoginDTO credentials) {
+		Token ret = this.userService.login(credentials.getUsername(),credentials.getPassword());
+		if (ret == null)
 		{
 			throw new HTTPException(401);
 		}
+		return ret;
 		
 	}
 	
