@@ -34,7 +34,7 @@ public class IngredientController {
 		this.ingredientService = ingredientService;
 	}*/
 
-	@GetMapping("/search/")
+	@PostMapping("/search/")
 	public List<Ingredient> searchByName(@RequestBody SearchDTO search) {
 		List<Ingredient> toRet = this.ingredientService.getByName(search.getItem());
 		if(toRet == null)
