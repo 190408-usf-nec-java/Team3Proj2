@@ -1,5 +1,7 @@
 package com.revature.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,6 +33,10 @@ public class IngredientServices {
 
 	public Ingredient deleteById(int id) {
 		return this.ingredientRepository.deleteById(id);
+	}
+
+	public List<Ingredient> getByName(String item) {
+		return this.ingredientRepository.getByName(item);
 	}
 
 
