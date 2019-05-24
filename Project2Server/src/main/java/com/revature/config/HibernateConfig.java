@@ -20,6 +20,7 @@ import com.revature.entities.Ingredient;
 import com.revature.entities.Recipe;
 import com.revature.entities.Restaurant;
 import com.revature.entities.Tag;
+import com.revature.entities.Token;
 import com.revature.entities.User;
 import com.revature.entities.Utensil;
 
@@ -37,11 +38,11 @@ import com.revature.entities.Utensil;
 	    
 	    @Bean
 	    public LocalSessionFactoryBean getSessionFactory() {
-	        System.out.println("COnfiguring seshfactiory bean");
+	        System.out.println("Configuring sessionfactory bean");
 	        LocalSessionFactoryBean factoryBean = new LocalSessionFactoryBean();
 	        factoryBean.setConfigLocation(new ClassPathResource("hibernate.cfg.xml"));
 	        
-	        factoryBean.setAnnotatedClasses(User.class, Recipe.class, Restaurant.class, Ingredient.class, Comment.class, Utensil.class,Contain.class,Tag.class);
+	        factoryBean.setAnnotatedClasses(User.class, Recipe.class, Restaurant.class, Ingredient.class, Comment.class, Utensil.class,Contain.class,Tag.class,Token.class);
 	        
 	        factoryBean.setDataSource(getDataSource());
 	        

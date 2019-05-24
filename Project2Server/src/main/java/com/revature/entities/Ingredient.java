@@ -20,6 +20,7 @@ public class Ingredient {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ingredient_id")
 	private int id;
 
 	@Column(nullable = false)
@@ -27,7 +28,7 @@ public class Ingredient {
 
 
 	@OneToMany (
-			mappedBy= "ingredients",
+			mappedBy= "ingredient_id",
 			cascade = CascadeType.ALL,
 			orphanRemoval = true
 	)

@@ -42,9 +42,11 @@ public class User {
 	@Column(nullable = false, unique = true)
 	private String email;
 	
-	@ManyToMany
-	@JoinTable(name = "user_recipes", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = {
-			@JoinColumn(name = "recipe_id") })
+	@OneToMany(
+	        mappedBy = "user",
+	        cascade = CascadeType.ALL,
+	        orphanRemoval = true
+	        )
 	private List<Recipe> recipes;
 
 	@OneToMany(

@@ -6,12 +6,14 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 @Entity
@@ -21,6 +23,7 @@ public class Recipe {
 	
 		@Id
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
+		@Column(name = "recipe_id")
 		private int id;
 		@Column(nullable = false)
 		private String name;
@@ -33,14 +36,16 @@ public class Recipe {
 				@JoinColumn(name = "restaurant_id") })
 		private List<Restaurant> restaurants;
 
-		@ManyToMany
-		@JoinTable(name = "user_recipes", joinColumns = { @JoinColumn(name = "recipe_id") }, inverseJoinColumns = {
-				@JoinColumn(name = "user_id") })
-		private List<User> users;
+		@ManyToOne(fetch = FetchType.LAZY)
+	    @JoinColumn(name="user_id", nullable=false)
+		private User user;
 
-		@ManyToMany
-		@JoinTable(name = "recipes_comments", joinColumns = { @JoinColumn(name = "recipe_id") }, inverseJoinColumns = {
-				@JoinColumn(name = "comment_id") })
+
+		@OneToMany(
+		        mappedBy = "recipe",
+		        cascade = CascadeType.ALL,
+		        orphanRemoval = true
+		        )
 		private List<Comment> comments;
 		
 		@ManyToMany
@@ -54,7 +59,7 @@ public class Recipe {
 		private List<Utensil> utensils;
 		
 		@OneToMany(
-	        mappedBy = "recipes",
+	        mappedBy = "recipe_id",
 	        cascade = CascadeType.ALL,
 	        orphanRemoval = true
 	        )
@@ -92,12 +97,14 @@ public class Recipe {
 			this.restaurants = restaurants;
 		}
 
-		public List<User> getUsers() {
-			return users;
+		
+
+		public User getUser() {
+			return user;
 		}
 
-		public void setUsers(List<User> users) {
-			this.users = users;
+		public void setUser(User author) {
+			this.user = author;
 		}
 
 		public List<Comment> getComments() {
@@ -136,6 +143,7 @@ public class Recipe {
 		public int hashCode() {
 			final int prime = 31;
 			int result = 1;
+			result = prime * result + ((user == null) ? 0 : user.hashCode());
 			result = prime * result + ((comments == null) ? 0 : comments.hashCode());
 			result = prime * result + ((contains == null) ? 0 : contains.hashCode());
 			result = prime * result + ((directions == null) ? 0 : directions.hashCode());
@@ -143,7 +151,6 @@ public class Recipe {
 			result = prime * result + ((name == null) ? 0 : name.hashCode());
 			result = prime * result + ((restaurants == null) ? 0 : restaurants.hashCode());
 			result = prime * result + ((tags == null) ? 0 : tags.hashCode());
-			result = prime * result + ((users == null) ? 0 : users.hashCode());
 			result = prime * result + ((utensils == null) ? 0 : utensils.hashCode());
 			return result;
 		}
@@ -157,6 +164,11 @@ public class Recipe {
 			if (getClass() != obj.getClass())
 				return false;
 			Recipe other = (Recipe) obj;
+			if (user == null) {
+				if (other.user != null)
+					return false;
+			} else if (!user.equals(other.user))
+				return false;
 			if (comments == null) {
 				if (other.comments != null)
 					return false;
@@ -189,11 +201,6 @@ public class Recipe {
 					return false;
 			} else if (!tags.equals(other.tags))
 				return false;
-			if (users == null) {
-				if (other.users != null)
-					return false;
-			} else if (!users.equals(other.users))
-				return false;
 			if (utensils == null) {
 				if (other.utensils != null)
 					return false;
@@ -205,23 +212,11 @@ public class Recipe {
 		@Override
 		public String toString() {
 			return "Recipe [id=" + id + ", name=" + name + ", directions=" + directions + ", restaurants=" + restaurants
-					+ ", users=" + users + ", comments=" + comments + ", tags=" + tags + ", utensils=" + utensils
+					+ ", author=" + user + ", comments=" + comments + ", tags=" + tags + ", utensils=" + utensils
 					+ ", contains=" + contains + "]";
 		}
 
-		public Recipe(int id, String name, String directions, List<Restaurant> restaurants, List<User> users,
-				List<Comment> comments, List<Tag> tags, List<Utensil> utensils, List<Contain> contains) {
-			super();
-			this.id = id;
-			this.name = name;
-			this.directions = directions;
-			this.restaurants = restaurants;
-			this.users = users;
-			this.comments = comments;
-			this.tags = tags;
-			this.utensils = utensils;
-			this.contains = contains;
-		}
+		
 
 		public Recipe() {
 			super();
