@@ -1,62 +1,105 @@
 .content{
-    width: 100%;
-    height: 85vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #9CAFB7;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.form-box{
-    width: 70%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0.8;
-    background: #D0D38F;
+
+/* Right column (page content) */
+.right {
+  width: 80%;
+  height: 100%;
+  padding: 15px;
+  
 }
 
 nav{
-    display: flex;
-    justify-content: right;
-    background-color: #333;
+  display: flex;
+  justify-content: right;
+  background-color: #333;
   }
   
-  nav input, nav a {
-    float: left;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
+nav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  border-radius: 10px;
+  margin: 5px;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
   }
   
-  nav a:hover {
-    background-color: #ddd;
-    color: black;
+nav a:hover {
+  background-color: #ddd;
+  color: black;
   }
   
-  nav a.active {
-    background-color: #4CAF50;
-    color: white;
+nav a.active {
+  background-color: #4CAF50;
+  color: white;
   }
 
-  .card {
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+.card{
+  position: relative;
+  margin: 8px;
+  padding: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.8;
+  }
+
+  .sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
+  
+  .sidenav h1{
+    padding: 8px 8px 8px 32px;
+    align-items: center;
+  }
+
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: flex;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
     transition: 0.3s;
-    width: 40%;
-    border-radius: 5px;
   }
   
-  .card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  .sidenav a:hover {
+    color: #f1f1f1;
+    background: none;
   }
   
-  img {
-    border-radius: 5px 5px 0 0;
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
   }
   
-  .container {
-    padding: 2px 16px;
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
+
+  .sidemenu {
+    margin: 5px;
   }

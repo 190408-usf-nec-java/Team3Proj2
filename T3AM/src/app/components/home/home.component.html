@@ -1,10 +1,27 @@
-<nav>
-    <input id="button" type="button" routerLink="" value="Log Out" (click)="clearStorage()">
-    <a routerLink="/home" class="active">Home</a>
-    <a routerLink="/signup">Signup</a>    
-    <a routerLink="/login">Login</a>
-    <a routerLink="/search">Search</a>            
-</nav>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <span style="font-size:30px;cursor:pointer" class="sidemenu"(click)="openNav()">&#9776;</span>
+    <input type="text" class="form-control mr-sm-2" placeholder="Search..."  [(ngModel)]="searched"> 
+    <button class="btn btn-success" type="submit" (click)="search()">Search</button>   
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+        <h1>Menu</h1>
+        <div class="row">
+            <a routerLink="/login">Login</a>
+        </div>
+        <div class="row">
+            <a routerLink="/signup">Signup</a>
+        </div>
+        <div class="row">
+            <a routerLink="/profile">Profile</a> 
+        </div>
+        <div class="row">
+            <a routerLink="/about">About</a>
+        </div>   
+      </div>  
+      <a routerLink="/home" class="active">Home</a>
+      <a routerLink="/search" >Search</a> 
+    
+</nav>>
 
 <header class="bg">
 <div class= "content">
@@ -14,14 +31,11 @@
         </div>
 
         <div class="belt">
-            <a routerLink="/search">Search</a>
+            <a routerLink="/search">Search Recipes</a>
         </div>
 
         <div class="bottom">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-                Nam quibusdam architecto nostrum similique cupiditate 
-                repudiandae iusto ut molestias? Corrupti quasi 
-                illum eum aut itaque quam porro ad consequatur vitae eveniet.</p>
+            <p>Find the perfect recipe for you</p>
         </div>
     </div>
     
@@ -31,31 +45,25 @@
         </div>
     
         <div class="belt">
-            <a routerLink="/search">Search</a>
+            <a routerLink="/search">Search Ingredients</a>
         </div>
     
         <div class="bottom">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-                Nam quibusdam architecto nostrum similique cupiditate 
-                repudiandae iusto ut molestias? Corrupti quasi 
-                illum eum aut itaque quam porro ad consequatur vitae eveniet.</p>
+            <p>Look for specfic ingredients and what recipes they're used in</p>
             </div>
         </div>
 
     <div class="subcontent">
         <div class="top">
-            <img src="http://solelunarestaurant.com/wp-content/uploads/2016/10/Soleluna-food-restaurant-18-1500x1000.jpg">
+            <img src="http://thevoyageur.net/wp-content/uploads/2017/06/food_rome_italy_thevoyageur-7-1-1500x1000.jpg?x10692">
         </div>
         
         <div class="belt">
-            <a routerLink="/search">Search</a>
+            <a routerLink="/search">Search Restaurants</a>
         </div>
         
         <div class="bottom">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-                Nam quibusdam architecto nostrum similique cupiditate 
-                repudiandae iusto ut molestias? Corrupti quasi 
-                illum eum aut itaque quam porro ad consequatur vitae eveniet.</p>
+            <p>Locate restaurants and enjoy their meals</p>
         </div>
     </div>
 </div>

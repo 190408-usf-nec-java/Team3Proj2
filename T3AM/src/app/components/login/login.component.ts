@@ -16,6 +16,14 @@ export class LoginComponent implements OnInit, OnDestroy {
   lastStatus = 200;
 
   constructor(private loginService: LoginService, private router: Router) { }
+  
+  openNav() {
+    document.getElementById('mySidenav').style.width = '15%';
+  }
+
+  closeNav() {
+    document.getElementById('mySidenav').style.width = '0';
+  }
 
   ngOnInit() {
     this.loginResponse = this.loginService.$loginStatus.subscribe(status => {
@@ -35,8 +43,32 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
   }
 
+  usernameValidation(): boolean {
+    return this.username.length > 5;
+  }
+
+  passwordValidation(): boolean {
+    return this.password.length > 7;
+  }
+
+  showPasswordValidation(): string {
+    if (this.passwordValidation()) {
+      return 'form-control is-valid';
+    } else {
+      return 'form-control is-invalid';
+    }
+  }
+
+  showUsernameValidation(): string {
+    if (this.usernameValidation()) {
+      return 'form-control is-valid';
+    } else {
+      return 'form-control is-invalid';
+    }
+  }
+
   formValidation(): boolean {
-    return this.username.length > 0 && this.password.length > 0;
+    return this.username.length > 5 && this.password.length > 7;
   }
 
   submit() {

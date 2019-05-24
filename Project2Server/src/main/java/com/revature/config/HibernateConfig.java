@@ -42,7 +42,9 @@ import com.revature.entities.Utensil;
 	        LocalSessionFactoryBean factoryBean = new LocalSessionFactoryBean();
 	        factoryBean.setConfigLocation(new ClassPathResource("hibernate.cfg.xml"));
 	        
-	        factoryBean.setAnnotatedClasses(User.class, Recipe.class, Restaurant.class, Ingredient.class, Comment.class, Utensil.class,Contain.class,Tag.class,Token.class);
+
+	        factoryBean.setAnnotatedClasses(User.class, Recipe.class, Restaurant.class, Ingredient.class, Comment.class, Utensil.class,Contain.class,Tag.class, Token.class);
+
 	        
 	        factoryBean.setDataSource(getDataSource());
 	        

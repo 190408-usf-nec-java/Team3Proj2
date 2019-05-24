@@ -1,32 +1,57 @@
-<nav>
-    <input id="button" type="button" routerLink="" value="Log Out" (click)="clearStorage()">
-    <a routerLink="/home">Home</a>
-    <a routerLink="/signup">Signup</a>    
-    <a routerLink="/login" class="active">Login</a>
-    <a routerLink="/search">Search</a>            
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <span style="font-size:30px;cursor:pointer" class="sidemenu"(click)="openNav()">&#9776;</span>
+    <input type="text" class="form-control mr-sm-2" placeholder="Search..."  [(ngModel)]="searched"> 
+    <button class="btn btn-success" type="submit" (click)="search()">Search</button>   
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+        <h1>Menu</h1>
+        <div class="row">
+            <a routerLink="/login">Login</a>
+        </div>
+        <div class="row">
+            <a routerLink="/signup">Signup</a>
+        </div>
+        <div class="row">
+            <a routerLink="/profile">Profile</a> 
+        </div>
+        <div class="row">
+            <a routerLink="/about">About</a>
+        </div>   
+      </div>  
+      <a routerLink="/home">Home</a>
+      <a routerLink="/search">Search</a> 
+    
 </nav>
 
 <div class= "content">
     <div class="form-box">
-            
-            <p *ngIf="lastStatus === 400">Username or password is incorrect.</p>
+        <div class ="login-box d-flex flex-column" >
+
+            <h1 class="h1">Login</h1>
+            <a routerLink="/signup">Don't have an account, Create one</a>
+            <p *ngIf="lastStatus === 401">Username or password is incorrect.</p>
             <p *ngIf="lastStatus === 500">Unknown server error occurred.</p>
             <p *ngIf="lastStatus === 0">Server unreachable.</p>
     
             <form name="login-form">
+
             <div class="textbox">
+                
                 <i class="fas fa-user" aria-hidden="true"></i>
-                <input type="text" placeholder="Username" name="username">
+                <input type="text" [className]="showUsernameValidation()" placeholder="Username" name="username" [(ngModel)]= "username" required>
             </div>
     
             <div class="textbox">
                 <i class="fas fa-lock" aria-hidden="true"></i>
-                <input type="password" placeholder="Password" name="password">
+                <input type="password" [className]="showPasswordValidation()" placeholder="Password" name="password" [(ngModel)]= "password" required>
             </div>
         
-            <input class="btn" type="submit" name="submit"  (click)="submit()" value="Login">
+            <input class="btn" type="submit" [disabled]="!formValidation()"  (click)="submit()" value="Login">
             </form>
+
+            
+            
+        </div>
     </div>
 </div>
- 
 

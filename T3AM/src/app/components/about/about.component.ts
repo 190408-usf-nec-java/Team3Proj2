@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-about',
+  templateUrl: './about.component.html',
+  styleUrls: ['./about.component.css']
 })
-export class HomeComponent implements OnInit {
+export class AboutComponent implements OnInit {
 
   constructor() { }
+
   openNav() {
     document.getElementById('mySidenav').style.width = '15%';
   }
@@ -15,7 +16,7 @@ export class HomeComponent implements OnInit {
   closeNav() {
     document.getElementById('mySidenav').style.width = '0';
   }
-
+  
   ngOnInit() {
   }
 
