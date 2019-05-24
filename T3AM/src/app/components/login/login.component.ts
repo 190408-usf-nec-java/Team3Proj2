@@ -16,6 +16,14 @@ export class LoginComponent implements OnInit, OnDestroy {
   lastStatus = 200;
 
   constructor(private loginService: LoginService, private router: Router) { }
+  
+  openNav() {
+    document.getElementById('mySidenav').style.width = '15%';
+  }
+
+  closeNav() {
+    document.getElementById('mySidenav').style.width = '0';
+  }
 
   ngOnInit() {
     this.loginResponse = this.loginService.$loginStatus.subscribe(status => {
