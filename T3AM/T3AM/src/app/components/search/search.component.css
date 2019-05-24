@@ -6,19 +6,6 @@
   align-items: center;
 }
 
-.left {
-  width: 20%;
-  height: 100%;
-  padding: 15px 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #547980;
-}
-
-.left h2 {
-  padding-left: 8px;
-}
 
 /* Right column (page content) */
 .right {
@@ -27,16 +14,6 @@
   padding: 15px;
   
 }
-.search{
-  width: 100%;
-  font-size: 18px;
-  padding: 11px;
-  border: 1px solid #547980;
-  flex-wrap: wrap;
-  border-radius: 10px;
-  overflow: hidden;
-  color: black;
-}
 
 nav{
   display: flex;
@@ -44,10 +21,12 @@ nav{
   background-color: #333;
   }
   
-nav input, nav a {
+nav a {
   float: left;
   color: #f2f2f2;
   text-align: center;
+  border-radius: 10px;
+  margin: 5px;
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
@@ -71,4 +50,65 @@ nav a.active {
   justify-content: center;
   align-items: center;
   opacity: 0.8;
+  color: black;
+  }
+
+.card p{
+  color: black;
+}
+
+  .sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
+  
+  .sidenav h1{
+    padding: 8px 8px 8px 32px;
+    align-items: center;
+  }
+
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: flex;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+  }
+  
+  .sidenav a:hover {
+    color: #f1f1f1;
+    background: none;
+  }
+  
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
+
+  .sidemenu {
+    margin: 5px;
+  }
+  
+  .btn{
+    margin: 5px;
   }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SignupService } from 'src/app/services/signup.service';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { SearchService } from 'src/app/services/search.service';
 
 @Component({
   selector: 'app-signup',
@@ -11,17 +12,37 @@ import { Subscription } from 'rxjs';
 export class SignupComponent implements OnInit {
 
   passwordConfirmationFailed = false;
-  firstname = '';
-  lastname = '';
+  fname = '';
+  lname = '';
   email = '';
   username = '';
   password = '';
   password2 = '';
   signupResponse: Subscription;
   lastStatus = 200;
-  signupForm;
+  searched = '';
+  searched2 = '';
 
-  constructor(private signupService: SignupService, private router: Router) { }
+  constructor(private signupService: SignupService, private router: Router, private searchService: SearchService) { }
+  search() {
+    console.log('searching recipe...');
+    this.searchService.search(this.searched);
+    this.router.navigateByUrl('search');
+  }
+
+  searchIng() {
+    console.log('searching ingredient...');
+    this.searchService.searchIng(this.searched2);
+    this.router.navigateByUrl('search');
+  }
+
+  openNav() {
+    document.getElementById('mySidenav').style.width = '15%';
+  }
+
+  closeNav() {
+    document.getElementById('mySidenav').style.width = '0';
+  }
 
   confirmPassword() {
     if (this.password === this.password2) {
@@ -65,6 +86,14 @@ ngOnInit() {
     }
   }
 
+  showPasswordValidation2(): string {
+    if (this.passwordValidation()) {
+      return 'form-control is-valid';
+    } else {
+      return 'form-control is-invalid';
+    }
+  }
+
   showUsernameValidation(): string {
     if (this.usernameValidation()) {
       return 'form-control is-valid';
@@ -74,19 +103,14 @@ ngOnInit() {
   }
 
   formValidation(): boolean {
-    return this.firstname.length > 0 && this.lastname.length > 0 && this.email.length > 0 &&
+    return this.fname.length > 0 && this.lname.length > 0 && this.email.length > 0 &&
     this.username.length > 5 && this.password.length > 7;
   }
 
   submit() {
-    if(this.signupForm.valid){
       console.log('submitted');
-      this.signupService.signup(this.firstname, this.lastname,
+      this.signupService.signup(this.fname, this.lname,
         this.email, this.username, this.password);
-    } else{
-      alert("form not valid");
-    }
-
   }
 
 }
