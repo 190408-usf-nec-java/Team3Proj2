@@ -12,7 +12,8 @@ import { SearchComponent } from './components/search/search.component';
 import { LoginService } from './services/login.service';
 import { SignupService } from './services/signup.service';
 import { ProfileComponent } from './components/profile/profile.component';
-import { SearchApiService } from './services/search-api.service';
+import { AboutComponent } from './components/about/about.component';
+import { SearchService } from './services/search.service';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { SearchApiService } from './services/search-api.service';
     SignupComponent,
     HomeComponent,
     SearchComponent,
-    ProfileComponent
+    ProfileComponent,
+    AboutComponent
   ],
   imports: [
     FormsModule,
@@ -29,7 +31,7 @@ import { SearchApiService } from './services/search-api.service';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [LoginService, SignupService, SearchApiService],
+  providers: [LoginService, SignupService, SearchService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
