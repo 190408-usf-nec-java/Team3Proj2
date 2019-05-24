@@ -32,10 +32,9 @@ public class Comment {
 
 
 
-	@ManyToMany
-	@JoinTable(name = "recipes_comments", joinColumns = { @JoinColumn(name = "comment_id") }, inverseJoinColumns = {
-			@JoinColumn(name = "recipe_id") })
-	private List<Recipe> recipes;
+	@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="recipe_id", nullable=false)
+	private Recipe recipe;
 
 
 
@@ -75,14 +74,18 @@ public class Comment {
 
 
 
-	public List<Recipe> getRecipes() {
-		return recipes;
+	
+
+
+
+	public Recipe getRecipe() {
+		return recipe;
 	}
 
 
 
-	public void setRecipes(List<Recipe> recipes) {
-		this.recipes = recipes;
+	public void setRecipe(Recipe recipe) {
+		this.recipe = recipe;
 	}
 
 
@@ -93,7 +96,7 @@ public class Comment {
 		int result = 1;
 		result = prime * result + ((Content == null) ? 0 : Content.hashCode());
 		result = prime * result + id;
-		result = prime * result + ((recipes == null) ? 0 : recipes.hashCode());
+		result = prime * result + ((recipe == null) ? 0 : recipe.hashCode());
 		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
 	}
@@ -116,10 +119,10 @@ public class Comment {
 			return false;
 		if (id != other.id)
 			return false;
-		if (recipes == null) {
-			if (other.recipes != null)
+		if (recipe == null) {
+			if (other.recipe != null)
 				return false;
-		} else if (!recipes.equals(other.recipes))
+		} else if (!recipe.equals(other.recipe))
 			return false;
 		if (user == null) {
 			if (other.user != null)
@@ -133,16 +136,17 @@ public class Comment {
 
 	@Override
 	public String toString() {
-		return "Comment [id=" + id + ", Content=" + Content + ", user=" + user + ", recipes=" + recipes + "]";
-	}
+		return "Comment [id=" + id + ", Content=" + Content + ", user=" + user + ", recipe=" + recipe + "]";
+	}	
 
 
-	public Comment(int id, String content, User user, List<Recipe> recipes) {
+
+	public Comment(int id, String content, User user, Recipe recipe) {
 		super();
 		this.id = id;
 		Content = content;
 		this.user = user;
-		this.recipes = recipes;
+		this.recipe = recipe;
 	}
 
 
