@@ -11,8 +11,18 @@ export class AboutComponent implements OnInit {
 
   searched = '';
   searched2 = '';
+  token = sessionStorage.getItem('token');
 
   constructor(private searchService: SearchService, private router: Router) { }
+  clearStorage() {
+    console.log('clearing session storage...');
+    sessionStorage.clear();
+    console.log('session storage cleard...');
+  }
+
+  tokenValid() {
+    return this.token;
+  }
 
   search() {
     console.log('searching recipe...');

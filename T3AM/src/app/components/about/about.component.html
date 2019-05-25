@@ -11,16 +11,15 @@
           <a routerLink="/login">Login</a>
       </div>
       <div class="row">
-          <a routerLink="/signup">Signup</a>
+          <a routerLink="/signup" >Signup</a>
       </div>
       <div class="row">
-          <a routerLink="/profile">Profile</a> 
-      </div>
-      <div class="row">
-          <a routerLink="/about">About</a>
-      </div>   
+          <a routerLink="/profile" *ngIf="tokenValid()">Profile</a> 
+      </div>  
     </div>  
     <a routerLink="/home">Home</a> 
+    <a routerLink="/about" class="active">About</a>
+    <a routerLink="/home" (click)="clearStorage()" *ngIf="tokenValid()">Logout</a>
   
 </nav>
 

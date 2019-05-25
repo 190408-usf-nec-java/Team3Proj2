@@ -14,13 +14,12 @@
             <a routerLink="/signup">Signup</a>
         </div>
         <div class="row">
-            <a routerLink="/profile">Profile</a> 
-        </div>
-        <div class="row">
-            <a routerLink="/about">About</a>
-        </div>   
+            <a routerLink="/profile" *ngIf="tokenValid()">Profile</a> 
+        </div>  
       </div>  
       <a routerLink="/home">Home</a> 
+      <a routerLink="/about">About</a>
+      <a routerLink="" (click)="clearStorage()" *ngIf="tokenValid()">Logout</a>
     
 </nav>
 
