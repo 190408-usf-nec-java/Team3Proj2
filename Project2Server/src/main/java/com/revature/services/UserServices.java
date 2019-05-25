@@ -17,6 +17,7 @@ import com.revature.repositories.UserRepository;
 public class UserServices {
 	@Autowired
 	UserRepository userRepository;
+	@Autowired
 	TokenRepositoy tokenRepository;
 
 	/*@Inject

@@ -20,7 +20,7 @@ public class Ingredient {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ingredient_id")
+	@Column(name = "id")
 	private int id;
 
 	@Column(nullable = false)
