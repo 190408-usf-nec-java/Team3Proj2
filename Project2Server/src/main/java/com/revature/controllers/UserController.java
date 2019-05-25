@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.HttpClientErrorException;
 
 import com.revature.DTOs.LoginDTO;
+import com.revature.DTOs.TokenDTO;
 import com.revature.DTOs.UserDTO;
 import com.revature.entities.Token;
 import com.revature.entities.User;
@@ -45,7 +46,7 @@ private UserServices userService;
 	
 	@PostMapping("/login/")
 	@ResponseStatus(HttpStatus.ACCEPTED)
-	public Token loginUser(@RequestBody LoginDTO credentials) {
+	public TokenDTO loginUser(@RequestBody LoginDTO credentials) {
 		System.out.println("logging in");
 		Token ret = this.userService.login(credentials.getUsername(),credentials.getPassword());
 		System.out.println("token created" + ret);
@@ -53,7 +54,9 @@ private UserServices userService;
 		{
 			throw new HTTPException(401);
 		}
-		return ret;
+		TokenDTO dto = new TokenDTO(ret.getId(), ret.getUser().getId(), ret.getExpiration());
+		
+		return dto;
 		
 	}
 	
