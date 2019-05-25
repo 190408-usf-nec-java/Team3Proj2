@@ -1,5 +1,3 @@
-
-
 .content {
   width: 100%;
   height: 90vh;
@@ -9,70 +7,12 @@
   align-items: center;
 }
 
-.subcontent {
-  margin: 10px;
-  width: 23%;
-  height: 68%;
+.pics{
+  width: 73%;
+  margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
-  border-radius: 10px;
-  overflow: hidden;
-  opacity: 0.8;
-  transition: 0.3s ease;
-}
-.subcontent:hover{
-  width: 28%;
-  height: 85%;
-}
-
-.subcontent .top{
-  width: 100%;
-  height: 60%;
-  background: #34495e;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.subcontent .belt{
-  width: 100%;
-  height: 10%;
-  background: #7D7D7D;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.subcontent .bottom{
-  width: 100%;
-  height: 30%;
-  background-color: #333;
-  display: flex;
-  justify-content: center;
-  align-items: center; 
-}
-
-.subcontent .top img{
-  width: 120%;
-  height: 100%;
-}
-
-
-.subcontent .belt .btn{
-  width: 100%;
-  background: none;
-  border: none;
-  font-size: 20px;
-  
-}
-
-.subcontent .bottom p{
-  width: 100%;
-  height: auto;
-  text-align: center;
-  
 }
 
 nav{
@@ -154,6 +94,9 @@ nav a.active {
     margin: 5px;
   }
 
+  .btn{
+    margin: 5px;
+  }
  
 
   

@@ -50,7 +50,12 @@ nav a.active {
   justify-content: center;
   align-items: center;
   opacity: 0.8;
+  color: black;
   }
+
+.card p{
+  color: black;
+}
 
   .sidenav {
     height: 100%;
@@ -101,5 +106,9 @@ nav a.active {
   }
 
   .sidemenu {
+    margin: 5px;
+  }
+  
+  .btn{
     margin: 5px;
   }
