@@ -17,6 +17,7 @@ import com.revature.repositories.UserRepository;
 public class UserServices {
 	@Autowired
 	UserRepository userRepository;
+	@Autowired
 	TokenRepositoy tokenRepository;
 
 	/*@Inject
@@ -66,6 +67,7 @@ public class UserServices {
 		User toCheck = this.userRepository.getByUsername(username);
 		if(toCheck.getHashedpass().equals(hash(password,toCheck.getSalt())))
 		{
+			System.out.println("to Check =" + toCheck);
 			return this.tokenRepository.newToken(toCheck);
 		}
 		return null;
