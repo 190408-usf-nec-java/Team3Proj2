@@ -8,8 +8,6 @@ import { Subject } from 'rxjs';
 export class LoginService {
   private loginStatusSubject = new Subject<number>();
   public  $loginStatus = this.loginStatusSubject.asObservable();
-  
-  private loggedInStatus = JSON.parse(localStorage.getItem('loggedIn') || 'false')
 
   constructor(private httpClient: HttpClient) { }
 
@@ -26,7 +24,8 @@ export class LoginService {
         observe: 'response'
       }).subscribe(response => {
         console.log('request sent');
-        sessionStorage.setItem('token', response.body.toString());
+        localStorage.setItem('cache', response.body.toString());
+        console.log(localStorage);
         this.loginStatusSubject.next(200);
       }, err => {
         this.loginStatusSubject.next(err.status);
