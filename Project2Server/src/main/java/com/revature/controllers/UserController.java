@@ -54,7 +54,7 @@ private UserServices userService;
 		{
 			throw new HTTPException(401);
 		}
-		TokenDTO dto = new TokenDTO(ret.getId(), ret.getUser().getId(), ret.getExpiration());
+		TokenDTO dto = new TokenDTO(ret.getId(), ret.getUser().getId(),ret.getUser().getUserName(), ret.getExpiration());
 		
 		return dto;
 		

@@ -6,6 +6,14 @@ public class TokenDTO
 {
 	private int tokenID;
 	private int userID;
+	private String username;
+	public TokenDTO(int tokenID, int userID, String username, Timestamp expiry) {
+		super();
+		this.tokenID = tokenID;
+		this.userID = userID;
+		this.username = username;
+		this.expiry = expiry;
+	}
 	private Timestamp expiry;
 	public int getTokenID() {
 		return tokenID;
@@ -32,6 +40,7 @@ public class TokenDTO
 		result = prime * result + ((expiry == null) ? 0 : expiry.hashCode());
 		result = prime * result + tokenID;
 		result = prime * result + userID;
+		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
 	}
 	@Override
@@ -52,14 +61,14 @@ public class TokenDTO
 			return false;
 		if (userID != other.userID)
 			return false;
+		if (username == null) {
+			if (other.username != null)
+				return false;
+		} else if (!username.equals(other.username))
+			return false;
 		return true;
 	}
-	public TokenDTO(int tokenID, int userID, Timestamp expiry) {
-		super();
-		this.tokenID = tokenID;
-		this.userID = userID;
-		this.expiry = expiry;
-	}
+	
 	public TokenDTO() {
 		super();
 		// TODO Auto-generated constructor stub
