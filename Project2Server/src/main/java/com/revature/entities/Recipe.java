@@ -217,6 +217,19 @@ public class Recipe {
 		}
 
 		
+		
+		
+		public Recipe(String name, String directions, User user,
+				List<Comment> comments, List<Tag> tags, List<Utensil> utensils, List<Contain> contains) {
+			super();
+			this.name = name;
+			this.directions = directions;
+			this.user = user;
+			this.comments = comments;
+			this.tags = tags;
+			this.utensils = utensils;
+			this.contains = contains;
+		}
 
 		public Recipe() {
 			super();
