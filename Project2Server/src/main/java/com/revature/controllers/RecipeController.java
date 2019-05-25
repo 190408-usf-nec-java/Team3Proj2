@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.HttpClientErrorException;
 
 import com.revature.DTOs.RecipeDTO;
+import com.revature.DTOs.RecipeSDTO;
 import com.revature.DTOs.SearchDTO;
 import com.revature.entities.Contain;
 import com.revature.entities.Recipe;
@@ -53,13 +54,28 @@ private RecipeServices recipeService;
 	}
 	
 	@PostMapping("/search/")
-	public List<Recipe> searchByName(@RequestBody SearchDTO search) {
+	public List<RecipeSDTO> searchByName(@RequestBody SearchDTO search) {
 		List<Recipe> toRet = this.recipeService.getByName(search.getRecipe());
+		List<RecipeSDTO> returning = new ArrayList<RecipeSDTO>();
+		
+		for(Recipe r : toRet)
+		{
+			RecipeSDTO toAdd = new RecipeSDTO();
+			toAdd.setDirections(r.getDirections());
+			String ingredientslist = "";
+			for(Contain c : r.getContains())
+			{
+				ingredientslist += c.toString()+ "\n";
+			}
+			toAdd.setIngredientlist(ingredientslist);
+			toAdd.setName(r.getName());
+			
+		}
 		if(toRet == null)
 		{
 			throw new HttpClientErrorException(HttpStatus.NOT_FOUND);
 		}
-		return toRet;			
+		return returning;			
 			
 	}
 	
