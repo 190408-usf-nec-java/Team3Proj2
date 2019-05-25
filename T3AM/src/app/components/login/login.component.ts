@@ -17,8 +17,19 @@ export class LoginComponent implements OnInit, OnDestroy {
   password = '';
   loginResponse: Subscription;
   lastStatus = 200;
+  token = sessionStorage.getItem('token');
 
   constructor(private loginService: LoginService, private router: Router, private searchService: SearchService) { }
+
+  clearStorage() {
+    console.log('clearing session storage...');
+    sessionStorage.clear();
+    console.log('session storage cleard...');
+  }
+
+  tokenValid() {
+    return this.token;
+  }
 
   search() {
     console.log('searching recipe...');

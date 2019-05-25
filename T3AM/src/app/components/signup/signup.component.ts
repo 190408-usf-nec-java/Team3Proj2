@@ -22,8 +22,19 @@ export class SignupComponent implements OnInit {
   lastStatus = 200;
   searched = '';
   searched2 = '';
+  token = sessionStorage.getItem('token');
 
   constructor(private signupService: SignupService, private router: Router, private searchService: SearchService) { }
+  clearStorage() {
+    console.log('clearing session storage...');
+    sessionStorage.clear();
+    console.log('session storage cleard...');
+  }
+  
+  tokenValid() {
+    return this.token;
+  }
+
   search() {
     console.log('searching recipe...');
     this.searchService.search(this.searched);
