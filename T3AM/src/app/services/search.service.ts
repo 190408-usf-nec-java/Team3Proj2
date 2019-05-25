@@ -13,12 +13,12 @@ export class SearchService {
 
   search(search: string): void {
     const payload = {
-      search: search
+      item: search
     };
 
     console.log(payload);
 
-    this.httpClient.get('http://localhost:8081/recipe/search/', payload, {
+    this.httpClient.post('http://localhost:8081/ingredient/search/', payload, {
         observe: 'response'
       }).subscribe(response => {
         console.log('request sent');

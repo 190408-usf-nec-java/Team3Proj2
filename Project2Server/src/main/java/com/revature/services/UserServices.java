@@ -8,13 +8,16 @@ import org.springframework.stereotype.Service;
 
 import com.google.common.hash.Hashing;
 import com.revature.DTOs.UserDTO;
+import com.revature.entities.Token;
 import com.revature.entities.User;
+import com.revature.repositories.TokenRepositoy;
 import com.revature.repositories.UserRepository;
 
 @Service
 public class UserServices {
 	@Autowired
 	UserRepository userRepository;
+	TokenRepositoy tokenRepository;
 
 	/*@Inject
 	public UserServices(UserRepository userRepository) {
@@ -58,10 +61,14 @@ public class UserServices {
 		return this.userRepository.deleteById(id);
 	}
 
-	public boolean login(String username, String password) {
+	public Token login(String username, String password) {
 		// TODO Auto-generated method stub
 		User toCheck = this.userRepository.getByUsername(username);
-		return toCheck.getHashedpass().equals(hash(password,toCheck.getSalt()));
+		if(toCheck.getHashedpass().equals(hash(password,toCheck.getSalt())))
+		{
+			return this.tokenRepository.newToken(toCheck);
+		}
+		return null;
 	}
 
 	public void signUp(UserDTO user) {

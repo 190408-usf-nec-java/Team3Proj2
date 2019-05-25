@@ -9,10 +9,10 @@ import javax.persistence.Embeddable;
 public class ContainCk implements Serializable{
 
 	
-	@Column(name = "recipe_id")
+	@Column(name = "recipe")
 	private int recipeId;
 	
-	@Column(name = "ingredient_id")
+	@Column(name = "ingredient")
 	private int ingredientId;
 
 	public ContainCk() {

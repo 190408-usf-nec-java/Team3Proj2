@@ -2,15 +2,16 @@ package com.revature.entities;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 
 
 @Entity
@@ -19,7 +20,8 @@ public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	@Column(name = "user_id")
+	private int user_id;
 
 	@Column(nullable = false)
 	private String firstName;
@@ -38,23 +40,34 @@ public class User {
 
 	@Column(nullable = false, unique = true)
 	private String email;
-	
-	@ManyToMany
-	@JoinTable(name = "user_recipes", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = {
-			@JoinColumn(name = "recipe_id") })
+		
+	@OneToMany(
+	        mappedBy = "user",
+	        cascade = CascadeType.ALL,
+	        orphanRemoval = true
+	        )
 	private List<Recipe> recipes;
 
-	@ManyToMany
-	@JoinTable(name = "user_comments", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = {
-			@JoinColumn(name = "comment_id") })
+	@OneToMany(
+	        mappedBy = "user",
+	        cascade = CascadeType.ALL,
+	        orphanRemoval = true
+	        )
 	private List<Comment> comments;
+	
+	@OneToMany(
+	        mappedBy = "user",
+	        cascade = CascadeType.ALL,
+	        orphanRemoval = true
+	        )
+	private List<Token> tokens;
 
 	public int getId() {
-		return id;
+		return user_id;
 	}
 
 	public void setId(int id) {
-		this.id = id;
+		this.user_id = id;
 	}
 
 	public String getFirstName() {
@@ -128,7 +141,7 @@ public class User {
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
 		result = prime * result + ((hashedpass == null) ? 0 : hashedpass.hashCode());
-		result = prime * result + id;
+		result = prime * result + user_id;
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
 		result = prime * result + ((salt == null) ? 0 : salt.hashCode());
 		result = prime * result + ((userName == null) ? 0 : userName.hashCode());
@@ -159,7 +172,7 @@ public class User {
 				return false;
 		} else if (!hashedpass.equals(other.hashedpass))
 			return false;
-		if (id != other.id)
+		if (user_id != other.user_id)
 			return false;
 		if (lastName == null) {
 			if (other.lastName != null)

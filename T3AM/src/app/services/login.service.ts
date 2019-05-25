@@ -26,7 +26,7 @@ export class LoginService {
         observe: 'response'
       }).subscribe(response => {
         console.log('request sent');
-        // sessionStorage.setItem('cache', response.body.toString());
+        sessionStorage.setItem('token', response.body.toString());
         this.loginStatusSubject.next(200);
       }, err => {
         this.loginStatusSubject.next(err.status);

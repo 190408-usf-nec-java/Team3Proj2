@@ -22,6 +22,14 @@ export class SignupComponent implements OnInit {
   signupForm;
 
   constructor(private signupService: SignupService, private router: Router) { }
+  openNav() {
+    document.getElementById('mySidenav').style.width = '15%';
+  }
+
+  closeNav() {
+    document.getElementById('mySidenav').style.width = '0';
+  }
+  
 
   confirmPassword() {
     if (this.password === this.password2) {

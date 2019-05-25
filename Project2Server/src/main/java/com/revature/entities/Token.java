@@ -1,5 +1,6 @@
 package com.revature.entities;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -16,92 +17,54 @@ import javax.persistence.MapsId;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "comments")
-public class Comment {
+@Table(name = "tokens")
+public class Token {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "token_id")
 	private int id;
 
 	@Column(nullable = false)
-	private String Content;
+	private Timestamp expiration;
 
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="user_id", nullable=false)
     private User user;
 
-
-
-	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="recipe_id", nullable=false)
-	private Recipe recipe;
-
-
-
 	public int getId() {
 		return id;
 	}
-
-
 
 	public void setId(int id) {
 		this.id = id;
 	}
 
-
-
-	public String getContent() {
-		return Content;
+	public Timestamp getExpiration() {
+		return expiration;
 	}
 
-
-
-	public void setContent(String content) {
-		Content = content;
+	public void setExpiration(Timestamp expiration) {
+		this.expiration = expiration;
 	}
-
-
 
 	public User getUser() {
 		return user;
 	}
 
-
-
 	public void setUser(User user) {
 		this.user = user;
 	}
-
-
-
-	
-
-
-
-	public Recipe getRecipe() {
-		return recipe;
-	}
-
-
-
-	public void setRecipe(Recipe recipe) {
-		this.recipe = recipe;
-	}
-
-
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((Content == null) ? 0 : Content.hashCode());
+		result = prime * result + ((expiration == null) ? 0 : expiration.hashCode());
 		result = prime * result + id;
-		result = prime * result + ((recipe == null) ? 0 : recipe.hashCode());
 		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
 	}
-
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -111,18 +74,13 @@ public class Comment {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Comment other = (Comment) obj;
-		if (Content == null) {
-			if (other.Content != null)
+		Token other = (Token) obj;
+		if (expiration == null) {
+			if (other.expiration != null)
 				return false;
-		} else if (!Content.equals(other.Content))
+		} else if (!expiration.equals(other.expiration))
 			return false;
 		if (id != other.id)
-			return false;
-		if (recipe == null) {
-			if (other.recipe != null)
-				return false;
-		} else if (!recipe.equals(other.recipe))
 			return false;
 		if (user == null) {
 			if (other.user != null)
@@ -132,30 +90,22 @@ public class Comment {
 		return true;
 	}
 
-
-
 	@Override
 	public String toString() {
-		return "Comment [id=" + id + ", Content=" + Content + ", user=" + user + ", recipe=" + recipe + "]";
-	}	
-
-
-
-	public Comment(int id, String content, User user, Recipe recipe) {
-		super();
-		this.id = id;
-		Content = content;
-		this.user = user;
-		this.recipe = recipe;
+		return "Token [id=" + id + ", expiration=" + expiration + ", user=" + user + "]";
 	}
 
+	public Token(User u) {
+		super();
+		this.user = u;
+		this.expiration = new Timestamp(System.currentTimeMillis() + 10800000);
+	}
 
-
-	public Comment() {
+	public Token() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	 
+
+
 	
 }
