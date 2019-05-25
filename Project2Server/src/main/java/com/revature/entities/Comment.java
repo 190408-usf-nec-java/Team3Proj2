@@ -141,9 +141,8 @@ public class Comment {
 
 
 
-	public Comment(int id, String content, User user, Recipe recipe) {
+	public Comment(String content, User user, Recipe recipe) {
 		super();
-		this.id = id;
 		Content = content;
 		this.user = user;
 		this.recipe = recipe;
