@@ -92,6 +92,7 @@ private RecipeServices recipeService;
 		recipe.setContains(contains);
 		
 		recipeService.create(recipe);
+		return true;
 			
 	}
 	

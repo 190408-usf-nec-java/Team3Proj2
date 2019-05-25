@@ -68,6 +68,7 @@ public class UserServices {
 		{
 			return this.tokenRepository.newToken(toCheck);
 		}
+		
 		return null;
 	}
 
