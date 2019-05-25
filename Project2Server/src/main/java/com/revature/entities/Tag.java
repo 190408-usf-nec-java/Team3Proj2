@@ -18,6 +18,8 @@ public class Tag {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
+	private String description;
+	
 	@ManyToMany
 	@JoinTable(name = "recipes_tags", joinColumns = { @JoinColumn(name = "tag_id") }, inverseJoinColumns = {
 			@JoinColumn(name = "recipe_id") })
