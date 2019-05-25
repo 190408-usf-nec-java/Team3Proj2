@@ -4,6 +4,10 @@ import java.sql.Timestamp;
 
 public class TokenDTO 
 {
+	@Override
+	public String toString() {
+		return "TokenDTO [tokenID=" + tokenID + ", userID=" + userID + ", expiry=" + expiry + "]";
+	}
 	private int tokenID;
 	private int userID;
 	private Timestamp expiry;

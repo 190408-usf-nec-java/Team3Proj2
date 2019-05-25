@@ -49,13 +49,13 @@ private UserServices userService;
 	public TokenDTO loginUser(@RequestBody LoginDTO credentials) {
 		System.out.println("logging in");
 		Token ret = this.userService.login(credentials.getUsername(),credentials.getPassword());
-		System.out.println("token created" + ret);
+		
 		if (ret == null)
 		{
 			throw new HTTPException(401);
 		}
 		TokenDTO dto = new TokenDTO(ret.getId(), ret.getUser().getId(), ret.getExpiration());
-		
+		System.out.println("token created" + dto);
 		return dto;
 		
 	}
