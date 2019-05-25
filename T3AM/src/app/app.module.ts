@@ -12,7 +12,6 @@ import { SearchComponent } from './components/search/search.component';
 import { LoginService } from './services/login.service';
 import { SignupService } from './services/signup.service';
 import { ProfileComponent } from './components/profile/profile.component';
-import { SearchApiService } from './services/search-api.service';
 import { AboutComponent } from './components/about/about.component';
 import { SearchService } from './services/search.service';
 
@@ -32,7 +31,7 @@ import { SearchService } from './services/search.service';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [LoginService, SignupService, SearchApiService, SearchService],
+  providers: [LoginService, SignupService, SearchService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
