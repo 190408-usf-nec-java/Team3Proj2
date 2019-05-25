@@ -3,7 +3,9 @@
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <span style="font-size:30px;cursor:pointer" class="sidemenu"(click)="openNav()">&#9776;</span>
         <input type="text" class="form-control mr-sm-2" placeholder="Search..."  [(ngModel)]="searched"> 
-        <button class="btn btn-success" type="submit" (click)="search()">Search</button>   
+        <button class="btn btn-success" type="submit" (click)="search()">Search</button>  
+        <input type="text" class="form-control mr-sm-2" placeholder="Search Ingredients" [(ngModel)]="searched2"> 
+        <button class="btn btn-success" type="submit" (click)="searchIng()">Search</button>    
         <div id="mySidenav" class="sidenav">
             <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
             <h1>Menu</h1>
@@ -21,7 +23,6 @@
             </div>   
           </div>  
           <a routerLink="/home">Home</a>
-          <a routerLink="/search">Search</a> 
         
     </nav>
 
@@ -68,7 +69,7 @@
                 <input type="password" placeholder=" Confirm Password" name="password2" required [(ngModel)]="password2" [className]="showPasswordValidation2()">
             </div>
         
-            <input class="btn" type="submit" name="submit" [disabled]="!formValidation()"  (click)="submit()" value="Signup">
+            <input class="btn2" type="submit" name="submit" [disabled]="!formValidation()"  (click)="submit()" value="Signup">
             </form>
 
         </div>

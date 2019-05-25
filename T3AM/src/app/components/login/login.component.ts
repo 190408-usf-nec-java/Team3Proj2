@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { LoginService } from 'src/app/services/login.service';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
+import { SearchService } from 'src/app/services/search.service';
 
 @Component({
   selector: 'app-login',
@@ -10,13 +11,27 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit, OnDestroy {
 
+  searched = '';
+  searched2 = '';
   username = '';
   password = '';
   loginResponse: Subscription;
   lastStatus = 200;
 
-  constructor(private loginService: LoginService, private router: Router) { }
-  
+  constructor(private loginService: LoginService, private router: Router, private searchService: SearchService) { }
+
+  search() {
+    console.log('searching recipe...');
+    this.searchService.search(this.searched);
+    this.router.navigateByUrl('search');
+  }
+
+  searchIng() {
+    console.log('searching ingredient...');
+    this.searchService.searchIng(this.searched2);
+    this.router.navigateByUrl('search');
+  }
+
   openNav() {
     document.getElementById('mySidenav').style.width = '15%';
   }

@@ -11,13 +11,20 @@ import { SearchService } from 'src/app/services/search.service';
 export class SearchComponent implements OnInit {
   
   searched = '';
+  searched2 = '';
   searchResponse: Subscription;
+  require: any;
 
   constructor(private searchService: SearchService, private router: Router) { }
 
   search() {
-    console.log('searching...');
+    console.log('searching recipe...');
     this.searchService.search(this.searched);
+  }
+
+  searchIng() {
+    console.log('searching ingredient...');
+    this.searchService.searchIng(this.searched2);
   }
 
   openNav() {

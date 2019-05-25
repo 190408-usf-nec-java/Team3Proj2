@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SignupService } from 'src/app/services/signup.service';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { SearchService } from 'src/app/services/search.service';
 
 @Component({
   selector: 'app-signup',
@@ -19,9 +20,22 @@ export class SignupComponent implements OnInit {
   password2 = '';
   signupResponse: Subscription;
   lastStatus = 200;
-  signupForm;
+  searched = '';
+  searched2 = '';
 
-  constructor(private signupService: SignupService, private router: Router) { }
+  constructor(private signupService: SignupService, private router: Router, private searchService: SearchService) { }
+  search() {
+    console.log('searching recipe...');
+    this.searchService.search(this.searched);
+    this.router.navigateByUrl('search');
+  }
+
+  searchIng() {
+    console.log('searching ingredient...');
+    this.searchService.searchIng(this.searched2);
+    this.router.navigateByUrl('search');
+  }
+
   openNav() {
     document.getElementById('mySidenav').style.width = '15%';
   }
@@ -29,7 +43,6 @@ export class SignupComponent implements OnInit {
   closeNav() {
     document.getElementById('mySidenav').style.width = '0';
   }
-  
 
   confirmPassword() {
     if (this.password === this.password2) {
