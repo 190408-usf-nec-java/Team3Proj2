@@ -127,8 +127,7 @@ public class Contain {
 		}
 		@Override
 		public String toString() {
-			return "Contain [id=" + id + ", recipe_id=" + recipe_id + ", ingredient_id=" + ingredient_id + ", amount="
-					+ amount + ", unit=" + unit + "]";
+			return "" + amount + " " + unit + " " + ingredient_id.getName();
 		}
 	
 	     
