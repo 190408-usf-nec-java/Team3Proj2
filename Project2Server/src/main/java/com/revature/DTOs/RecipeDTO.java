@@ -8,7 +8,7 @@ public class RecipeDTO {
 	private int user;
 	private int[] tags;
 	private int[] utensils;
-	private int[] ingredients;
+	private String[] ingredients;
 	private String[] amounts;
 	private String[] units;
 	
