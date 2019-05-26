@@ -8,8 +8,8 @@ public class RecipeSDTO {
 	private String name;
 	private String ingredientlist;
 	private String directions;
-	private List<Comment> comments;
-	public RecipeSDTO(String name, String ingredientlist, String directions, List<Comment> comments) {
+	private List<String> comments;
+	public RecipeSDTO(String name, String ingredientlist, String directions, List<String> comments) {
 		super();
 		this.name = name;
 		this.ingredientlist = ingredientlist;
@@ -38,10 +38,10 @@ public class RecipeSDTO {
 	public void setDirections(String directions) {
 		this.directions = directions;
 	}
-	public List<Comment> getComments() {
+	public List<String> getComments() {
 		return comments;
 	}
-	public void setComments(List<Comment> comments) {
+	public void setComments(List<String> comments) {
 		this.comments = comments;
 	}
 	
