@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   searchIng() {
     console.log('searching ingredient...');
     this.searchService.searchIng(this.searched2);
-    this.router.navigateByUrl('search');
+    this.router.navigateByUrl('searchIng');
   }
 
   openNav() {

@@ -33,7 +33,7 @@ export class AboutComponent implements OnInit {
   searchIng() {
     console.log('searching ingredient...');
     this.searchService.searchIng(this.searched2);
-    this.router.navigateByUrl('search');
+    this.router.navigateByUrl('searchIng');
   }
 
   openNav() {
