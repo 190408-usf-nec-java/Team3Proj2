@@ -51,4 +51,9 @@ public class UtensilRepository {
 
 	}
 
+	public Utensil getByName(String i) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
