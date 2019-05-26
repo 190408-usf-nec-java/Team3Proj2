@@ -52,6 +52,10 @@
     opacity: 0.8;
     color: black;
     }
+
+  .card h5{
+    color: black;
+  }
   
   .card p{
     color: black;

@@ -53,6 +53,10 @@ nav a.active {
   color: black;
   }
 
+.card h5{
+  color: black;
+}
+
 .card p{
   color: black;
 }

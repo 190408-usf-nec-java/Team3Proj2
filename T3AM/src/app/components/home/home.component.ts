@@ -12,6 +12,7 @@ export class HomeComponent implements OnInit {
   searched = '';
   searched2 = '';
   token = sessionStorage.getItem('token');
+  token_user = JSON.parse(localStorage.getItem('token')).username;
 
   constructor(private searchService: SearchService, private router: Router) { }
   clearStorage() {

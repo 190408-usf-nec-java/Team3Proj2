@@ -58,6 +58,7 @@ public class IngredientRepository {
 	public List<Ingredient> getByName(String item) {
 		Session session = sf.getCurrentSession();
 		List<Ingredient> ing;
+		System.out.println("grabbing ingredient " + item);
 		try
 		{
 			ing = session.createQuery("Select i from Ingredient i where i.name like :criteria",Ingredient.class).setParameter("criteria", '%'+ item +'%').list();
