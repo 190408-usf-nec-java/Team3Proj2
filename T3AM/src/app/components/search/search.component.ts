@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { SearchService } from 'src/app/services/search.service';
+import { Recipe } from 'src/app/classes/recipe';
 
 @Component({
   selector: 'app-search',
@@ -15,6 +16,7 @@ export class SearchComponent implements OnInit {
   searchResponse: Subscription;
   require: any;
   token = sessionStorage.getItem('token');
+  recipeArray = new Array<Recipe>();
 
   constructor(private searchService: SearchService, private router: Router) { }
   clearStorage() {

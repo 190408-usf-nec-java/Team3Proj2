@@ -33,16 +33,20 @@ public class IngredientController {
 	@PostMapping("/search/")
 	public List<String> searchByName(@RequestBody SearchDTO search) {
 		List<Ingredient> toRet = this.ingredientService.getByName(search.getItem());
+		System.out.println("searching " + search.getItem());
 		List<String> returning = new ArrayList<String>();
 		
+		if(toRet == null)
+		{
+			System.out.println("didnt find item");
+			throw new HttpClientErrorException(HttpStatus.NOT_FOUND);
+		}
+		System.out.println("found item");
 		for(Ingredient i : toRet)
 		{
 			returning.add(i.getName());
 		}
-		if(toRet == null)
-		{
-			throw new HttpClientErrorException(HttpStatus.NOT_FOUND);
-		}
+		
 		return returning;			
 			
 	}
