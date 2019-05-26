@@ -15,6 +15,8 @@ import { SignupService } from './services/signup.service';
 import { ProfileComponent } from './components/profile/profile.component';
 import { AboutComponent } from './components/about/about.component';
 import { SearchService } from './services/search.service';
+import { AddrecipesComponent } from './components/addrecipes/addrecipes.component';
+import { SearchIngComponent } from './components/search-ing/search-ing.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { SearchService } from './services/search.service';
     HomeComponent,
     SearchComponent,
     ProfileComponent,
-    AboutComponent
+    AboutComponent,
+    AddrecipesComponent,
+    SearchIngComponent
   ],
   imports: [
     FormsModule,

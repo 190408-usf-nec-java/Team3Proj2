@@ -30,11 +30,13 @@ export class SearchComponent implements OnInit {
   search() {
     console.log('searching recipe...');
     this.searchService.search(this.searched);
+    this.router.navigateByUrl('search');
   }
 
   searchIng() {
     console.log('searching ingredient...');
     this.searchService.searchIng(this.searched2);
+    this.router.navigateByUrl('searchIng');
   }
 
   openNav() {

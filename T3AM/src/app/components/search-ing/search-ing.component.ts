@@ -1,16 +1,19 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 import { SearchService } from 'src/app/services/search.service';
-import { Router, RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-search-ing',
+  templateUrl: './search-ing.component.html',
+  styleUrls: ['./search-ing.component.css']
 })
-export class HomeComponent implements OnInit {
-  images = [1, 2, 3].map(() => `https://picsum.photos/900/500?random&t=${Math.random()}`);
+export class SearchIngComponent implements OnInit {
+  
   searched = '';
   searched2 = '';
+  searchResponse: Subscription;
+  require: any;
   token = sessionStorage.getItem('token');
 
   constructor(private searchService: SearchService, private router: Router) { }
@@ -18,12 +21,12 @@ export class HomeComponent implements OnInit {
     console.log('clearing session storage...');
     sessionStorage.clear();
     console.log('session storage cleard...');
-  }
-
+  }  
+  
   tokenValid() {
     return this.token;
   }
-
+  
   search() {
     console.log('searching recipe...');
     this.searchService.search(this.searched);
@@ -35,6 +38,7 @@ export class HomeComponent implements OnInit {
     this.searchService.searchIng(this.searched2);
     this.router.navigateByUrl('searchIng');
   }
+
   openNav() {
     document.getElementById('mySidenav').style.width = '15%';
   }
