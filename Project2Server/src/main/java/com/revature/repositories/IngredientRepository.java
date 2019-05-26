@@ -71,5 +71,21 @@ public class IngredientRepository {
 		return ing;
 	}
 
+	public Ingredient getByExactName(String string) {
+		Session session = sf.getCurrentSession();
+		List<Ingredient> ing;
+		System.out.println("grabbing ingredient " + string);
+		try
+		{
+			ing = session.createQuery("Select i from Ingredient i where i.name = :criteria",Ingredient.class).setParameter("criteria",string).list();
+			Ingredient i = ing.get(0);
+		}
+		catch(IndexOutOfBoundsException e)
+		{
+			return null;
+		}
+		return ing.get(0);
+	}
+
 
 }

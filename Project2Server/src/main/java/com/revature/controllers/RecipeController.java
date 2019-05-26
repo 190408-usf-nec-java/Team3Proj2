@@ -91,19 +91,19 @@ private RecipeServices recipeService;
 			tags.add(tagService.getById(i));
 		}
 		
-		for(int i : toAdd.getUtensils())
+		for(String i : toAdd.getUtensils())
 		{
-			utensils.add(utensilService.getById(i));
+			utensils.add(utensilService.getByName(i));
 		}
 		ArrayList<Contain> contains = new ArrayList<Contain>();
 		
-		int[] ingIds = toAdd.getIngredients();
+		String[] ingIds = toAdd.getIngredients();
 		String[] ingUnits = toAdd.getUnits();
 		String[] ingAmounts = toAdd.getAmounts();
 		Recipe recipe = new Recipe(toAdd.getName(), toAdd.getDirections(), u, null, tags, utensils, null);
 		for(int i = 0; i < ingIds.length; i++)
 		{
-			contains.add(new Contain(recipe, ingredientService.getById(ingIds[i]), ingAmounts[i] , ingUnits[i]));
+			contains.add(new Contain(recipe, ingredientService.getIdbyName(ingIds[i]), ingAmounts[i] , ingUnits[i]));
 		}
 		recipe.setContains(contains);
 		

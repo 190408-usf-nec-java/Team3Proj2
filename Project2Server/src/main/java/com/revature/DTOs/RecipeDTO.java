@@ -7,8 +7,8 @@ public class RecipeDTO {
 	private String directions;
 	private int user;
 	private int[] tags;
-	private int[] utensils;
-	private int[] ingredients;
+	private String[] utensils;
+	private String[] ingredients;
 	private String[] amounts;
 	private String[] units;
 	
@@ -36,16 +36,16 @@ public class RecipeDTO {
 	public void setTags(int[] tags) {
 		this.tags = tags;
 	}
-	public int[] getUtensils() {
+	public String[] getUtensils() {
 		return utensils;
 	}
-	public void setUtensils(int[] utensils) {
+	public void setUtensils(String[] utensils) {
 		this.utensils = utensils;
 	}
-	public int[] getIngredients() {
+	public String[] getIngredients() {
 		return ingredients;
 	}
-	public void setIngredients(int[] ingredients) {
+	public void setIngredients(String[] ingredients) {
 		this.ingredients = ingredients;
 	}
 	public String[] getAmounts() {
@@ -67,7 +67,7 @@ public class RecipeDTO {
 				+ Arrays.toString(ingredients) + ", amounts=" + Arrays.toString(amounts) + ", units="
 				+ Arrays.toString(units) + "]";
 	}
-	public RecipeDTO(String name, String directions, int user, int[] tags, int[] utensils, int[] ingredients,
+	public RecipeDTO(String name, String directions, int user, int[] tags, String[] utensils, String[] ingredients,
 			String[] amounts, String[] units) {
 		super();
 		this.name = name;
