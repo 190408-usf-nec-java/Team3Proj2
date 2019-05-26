@@ -12,7 +12,7 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./search-ing.component.css']
 })
 export class SearchIngComponent implements OnInit {
-  
+
   searched = '';
   searched2 = '';
   searchResponse: Subscription;
@@ -25,12 +25,12 @@ export class SearchIngComponent implements OnInit {
     console.log('clearing session storage...');
     sessionStorage.clear();
     console.log('session storage cleard...');
-  }  
-  
+  }
+
   tokenValid() {
     return this.token;
   }
-  
+
   search() {
     console.log('searching recipe...');
     this.searchService.search(this.searched);

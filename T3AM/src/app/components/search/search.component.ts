@@ -3,6 +3,8 @@ import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { SearchService } from 'src/app/services/search.service';
 import { Recipe } from 'src/app/classes/recipe';
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-search',
@@ -18,7 +20,7 @@ export class SearchComponent implements OnInit {
   token = sessionStorage.getItem('token');
   recipeArray = new Array<Recipe>();
 
-  constructor(private searchService: SearchService, private router: Router) { }
+  constructor(private searchService: SearchService, private router: Router, private httpClient: HttpClient) { }
   clearStorage() {
     console.log('clearing session storage...');
     sessionStorage.clear();
@@ -29,10 +31,24 @@ export class SearchComponent implements OnInit {
     return this.token;
   }
   
-  search() {
-    console.log('searching recipe...');
-    this.searchService.search(this.searched);
-    this.router.navigateByUrl('search');
+  search(search: string): void {
+    const payload = {
+      recipe: search
+    };
+
+    console.log(payload);
+
+    this.httpClient.post('http://localhost:8081/recipe/search/', payload, {
+        observe: 'response'
+      }).pipe(map(response => response.body as Array <Recipe>))
+      .subscribe(response => {
+        response.forEach(element => {
+          this.recipeArray.push(element);
+        });
+        }, err => {
+
+        });
+
   }
 
   searchIng() {
@@ -50,6 +66,7 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.search('Scrambled Eggs');
   }
 
 }
