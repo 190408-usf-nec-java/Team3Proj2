@@ -1,9 +1,13 @@
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
   <span style="font-size:30px;cursor:pointer" class="sidemenu"(click)="openNav()">&#9776;</span>
-  <input type="text" class="form-control mr-sm-2" placeholder="Search..."  [(ngModel)]="searched"> 
+  <input type="text" class="form-control mr-sm-2" placeholder="Search Recipes"  [(ngModel)]="searched"> 
   <button class="btn btn-success" type="submit" (click)="search()">Search</button>   
-  <input type="text" class="form-control mr-sm-2" placeholder="Search Ingredients"> 
-  <button class="btn btn-success" type="submit" (click)="searchIng()">Search</button>   
+
+
+  <input type="text" class="form-control mr-sm-2" placeholder="Search Ingredients" [(ngModel)]="searched3"> 
+  <button class="btn btn-success" type="submit" (click)="searchIng()">Search</button> 
+  
+  
   <div id="mySidenav" class="sidenav">
       <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
       <h1>Menu</h1>
@@ -39,25 +43,7 @@
                   <a href="#" class="card-link">Card link</a>
                   <a href="#" class="card-link">Another link</a>
               </div>
-          </div>
-          
-          <!-- <div class="table-box">
-      
-            <table class="tickets">
-              <tr>
-              <th colspan="9">Ingredients</th> 
-            </tr>
-              <tr>
-                <th>id</th>
-                <th>name</th>
-              </tr>
-              <tr *ngFor="let item of ingredientArray">
-                <td>{{ item }}</td>
-              </tr>
-            </table>
-      
-          </div> -->
-          
+          </div>          
             
       </div>
 

@@ -99,6 +99,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   submit() {
     console.log('submitted');
+    console.log('username = ' + this.username + ' | password = ' + this.password);
     this.loginService.login(this.username, this.password);
   }
 }
