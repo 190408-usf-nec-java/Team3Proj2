@@ -32,4 +32,8 @@ public class UtensilServices {
 		return this.utensilRepository.deleteById(id);
 	}
 
+	public Utensil getByName(String i) {
+		return this.utensilRepository.getByName(i);
+	}
+
 }

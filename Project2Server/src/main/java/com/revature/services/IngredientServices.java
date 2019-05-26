@@ -39,6 +39,10 @@ public class IngredientServices {
 		return this.ingredientRepository.getByName(item);
 	}
 
+	public Ingredient getIdbyName(String string) {
+		return this.ingredientRepository.getByExactName(string);
+	}
+
 
 	
 }
