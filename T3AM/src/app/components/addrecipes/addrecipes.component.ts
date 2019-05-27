@@ -4,6 +4,8 @@ import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { NgbPaginationNumber } from '@ng-bootstrap/ng-bootstrap';
 import { Users } from 'src/app/classes/users';
+import { SearchService } from 'src/app/services/search.service';
+
 @Component({
   selector: 'app-addrecipes',
   templateUrl: './addrecipes.component.html',
@@ -11,7 +13,8 @@ import { Users } from 'src/app/classes/users';
 })
 export class AddrecipesComponent implements OnInit {
   name = ' ' ;
- 
+  searched = '';
+  searched2 = '';
   directions  = ' ';
   user = JSON.parse(localStorage.getItem('token')).userID;
   tags: number;
@@ -20,7 +23,27 @@ export class AddrecipesComponent implements OnInit {
   sumbitResponse: Subscription;
   laststatus = 200;
 
-  constructor(private addrecipeService: AddrecipesService, private router: Router) { }
+  constructor(private addrecipeService: AddrecipesService, private router: Router, private searchService: SearchService) { }
+
+  search() {
+    console.log('searching recipe...');
+    this.searchService.search(this.searched);
+    this.router.navigateByUrl('search');
+  }
+
+  searchIng() {
+    console.log('searching ingredient...');
+    this.searchService.searchIng(this.searched2);
+    this.router.navigateByUrl('searchIng');
+  }
+
+  openNav() {
+    document.getElementById('mySidenav').style.width = '15%';
+  }
+
+  closeNav() {
+    document.getElementById('mySidenav').style.width = '0';
+  }
 
   ngOnInit() {
     this.sumbitResponse = this.addrecipeService.$submitStatus.subscribe(status => {
