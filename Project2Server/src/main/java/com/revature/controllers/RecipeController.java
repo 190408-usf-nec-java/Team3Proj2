@@ -95,7 +95,7 @@ private RecipeServices recipeService;
 		{
 			utensils.add(utensilService.getByName(i));
 		}
-		ArrayList<Contain> contains = new ArrayList<Contain>();
+		/*ArrayList<Contain> contains = new ArrayList<Contain>();
 		
 		List<String> ingIds = toAdd.getIngredients();
 		List<String> ingUnits = toAdd.getUnits();
@@ -105,7 +105,7 @@ private RecipeServices recipeService;
 		{
 			contains.add(new Contain(recipe, ingredientService.getIdbyName(ingIds.get(i)), ingAmounts.get(i) , ingUnits.get(i)));
 		}
-		recipe.setContains(contains);
+		recipe.setContains(contains);*/
 		
 		recipeService.create(recipe);
 		return true;
