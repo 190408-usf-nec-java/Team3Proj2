@@ -91,17 +91,17 @@ private RecipeServices recipeService;
 			tags.add(tagService.getById(i));
 		}
 		
-		for(String i : toAdd.getUtensils())
+		/*for(String i : toAdd.getUtensils())
 		{
 			utensils.add(utensilService.getByName(i));
 		}
-		/*ArrayList<Contain> contains = new ArrayList<Contain>();
+		ArrayList<Contain> contains = new ArrayList<Contain>();
 		
 		List<String> ingIds = toAdd.getIngredients();
 		List<String> ingUnits = toAdd.getUnits();
-		List<String> ingAmounts = toAdd.getAmounts();
+		List<String> ingAmounts = toAdd.getAmounts();*/
 		Recipe recipe = new Recipe(toAdd.getName(), toAdd.getDirections(), u, null, tags, utensils, null);
-		for(int i = 0; i < ingIds.size(); i++)
+		/*for(int i = 0; i < ingIds.size(); i++)
 		{
 			contains.add(new Contain(recipe, ingredientService.getIdbyName(ingIds.get(i)), ingAmounts.get(i) , ingUnits.get(i)));
 		}
