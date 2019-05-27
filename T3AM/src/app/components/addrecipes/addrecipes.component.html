@@ -1,40 +1,43 @@
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-    <span style="font-size:30px;cursor:pointer" class="sidemenu"(click)="openNav()">&#9776;</span>
-    <input type="text" class="form-control mr-sm-2" placeholder="Search Recipes" [(ngModel)]="searched"> 
-    <button class="btn btn-success" type="submit" (click)="search()">Search</button>   
-    <input type="text" class="form-control mr-sm-2" placeholder="Search Ingredients" [(ngModel)]="searched2"> 
-    <button class="btn btn-success" type="submit" (click)="searchIng()">Search</button>   
-    <div id="mySidenav" class="sidenav">
-        <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
-        <h1>Menu</h1>
-        <div class="row">
-            <a routerLink="/login">Login</a>
-        </div>
-        <div class="row">
-            <a routerLink="/signup">Signup</a>
-        </div>
-        <div class="row" *ngIf="tokenValid()">
-            <a routerLink="/add">Add a recipe</a> 
-        </div>  
-        <div class="row">
-            <a routerLink="/profile" *ngIf="tokenValid()">Profile</a> 
-        </div>  
-      </div>  
-      <a routerLink="/home">Home</a> 
-      <a routerLink="/about">About</a>
-      <a routerLink="" (click)="clearStorage()" *ngIf="tokenValid()">Logout</a>
-    
-</nav>
+        <span style="font-size:30px;cursor:pointer" class="sidemenu"(click)="openNav()">&#9776;</span>
+        <h4 *ngIf="tokenValid()">Welcome {{token_user }}</h4>
+        <input type="text" class="form-control mr-sm-2" placeholder="Search Recipes"  [(ngModel)]="searched"> 
+        <button class="btn btn-success" type="submit" (click)="search()">Search</button>   
+        <input type="text" class="form-control mr-sm-2" placeholder="Search Ingredients" [(ngModel)]="searched2"> 
+        <button class="btn btn-success" type="submit" (click)="searchIng()">Search</button>   
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+            <h1>Menu</h1>
+            <div class="row">
+                <a routerLink="/login">Login</a>
+            </div>
+            <div class="row">
+                <a routerLink="/signup">Signup</a>
+            </div>
+            <div class="row" *ngIf="tokenValid()">
+                <a routerLink="/addrecipe">Add a recipe</a> 
+            </div>  
+            <div class="row" *ngIf="tokenValid()">
+                <a routerLink="/profile">Profile</a> 
+            </div>  
+          </div>  
+          <a routerLink="/home" >Home</a> 
+          <a routerLink="/about">About</a>
+          <a routerLink="/home" (click)="clearStorage()" *ngIf="tokenValid()">Logout</a>
+        
+    </nav>
 
 <div class="content">
     <div class="form-box">
-        <div class="ticket-box">
+        <div class="ticket-box d-flex flex-column">
 
             <div class="textbox">
+                <h5 class="h5">Recipe Name</h5>
                 <textarea  id="name" [(ngModel)]="name" placeholder ="recipe name" >Recipe Name</textarea>
             </div>
             
             <div class="textbox">
+                <h5 class="h5">Directions</h5>
                 <textarea class="textbox" id="directions" [(ngModel)]="directions" placeholder = "Directions" >directions</textarea>
             </div>
                 

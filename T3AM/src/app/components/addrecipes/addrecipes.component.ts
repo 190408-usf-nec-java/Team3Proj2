@@ -17,6 +17,7 @@ export class AddrecipesComponent implements OnInit {
   searched2 = '';
   directions  = ' ';
   user = JSON.parse(localStorage.getItem('token')).userID;
+  token = sessionStorage.getItem('token');
   tags: number;
  
   submitSucceeded = undefined;
@@ -24,6 +25,15 @@ export class AddrecipesComponent implements OnInit {
   laststatus = 200;
 
   constructor(private addrecipeService: AddrecipesService, private router: Router, private searchService: SearchService) { }
+  clearStorage() {
+    console.log('clearing session storage...');
+    sessionStorage.clear();
+    console.log('session storage cleard...');
+  }
+
+  tokenValid() {
+    return this.token;
+  }
 
   search() {
     console.log('searching recipe...');
