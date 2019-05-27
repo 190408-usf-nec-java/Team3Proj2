@@ -35,9 +35,13 @@ import com.revature.services.UtensilServices;
 public class RecipeController {
 	@Autowired
 private RecipeServices recipeService;
+	@Autowired
 	private UserServices userService;
+	@Autowired
 	private IngredientServices ingredientService;
+	@Autowired
 	private TagServices tagService;
+	@Autowired
 	private UtensilServices utensilService;
 	
 	/*
@@ -81,15 +85,15 @@ private RecipeServices recipeService;
 	
 	@PostMapping("/create/")
 	@ResponseStatus(HttpStatus.CREATED)
-	public boolean searchByName(@RequestBody RecipeDTO toAdd) {
+	public boolean create(@RequestBody RecipeDTO toAdd) {
 		int uid = toAdd.getUser();
 		User u = userService.getById(uid);
 		ArrayList<Tag> tags = new ArrayList<Tag>();
 		ArrayList<Utensil> utensils = new ArrayList<Utensil>();
-		for(int i : toAdd.getTags())
+		/*for(int i : toAdd.getTags())
 		{
 			tags.add(tagService.getById(i));
-		}
+		}*/
 		
 		/*for(String i : toAdd.getUtensils())
 		{
