@@ -16,6 +16,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { AboutComponent } from './components/about/about.component';
 import { SearchService } from './services/search.service';
 import { AddrecipesComponent } from './components/addrecipes/addrecipes.component';
+import { AddrecipesService } from './services/addrecipes.service';
 import { SearchIngComponent } from './components/search-ing/search-ing.component';
 
 @NgModule({
@@ -37,7 +38,7 @@ import { SearchIngComponent } from './components/search-ing/search-ing.component
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [LoginService, SignupService, SearchService],
+  providers: [LoginService, SignupService, SearchService, AddrecipesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
