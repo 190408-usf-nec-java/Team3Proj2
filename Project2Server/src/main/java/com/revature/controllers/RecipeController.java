@@ -97,13 +97,13 @@ private RecipeServices recipeService;
 		}
 		ArrayList<Contain> contains = new ArrayList<Contain>();
 		
-		String[] ingIds = toAdd.getIngredients();
-		String[] ingUnits = toAdd.getUnits();
-		String[] ingAmounts = toAdd.getAmounts();
+		List<String> ingIds = toAdd.getIngredients();
+		List<String> ingUnits = toAdd.getUnits();
+		List<String> ingAmounts = toAdd.getAmounts();
 		Recipe recipe = new Recipe(toAdd.getName(), toAdd.getDirections(), u, null, tags, utensils, null);
-		for(int i = 0; i < ingIds.length; i++)
+		for(int i = 0; i < ingIds.size(); i++)
 		{
-			contains.add(new Contain(recipe, ingredientService.getIdbyName(ingIds[i]), ingAmounts[i] , ingUnits[i]));
+			contains.add(new Contain(recipe, ingredientService.getIdbyName(ingIds.get(i)), ingAmounts.get(i) , ingUnits.get(i)));
 		}
 		recipe.setContains(contains);
 		

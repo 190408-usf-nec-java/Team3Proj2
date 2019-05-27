@@ -1,16 +1,30 @@
 package com.revature.DTOs;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class RecipeDTO {
 	private String name;
 	private String directions;
 	private int user;
 	private int[] tags;
-	private String[] utensils;
-	private String[] ingredients;
-	private String[] amounts;
-	private String[] units;
+	private List<String> utensils;
+	private List<String> ingredients;
+	private List<String> amounts;
+	
+	public void setUtensils(List<String> utensils) {
+		this.utensils = utensils;
+	}
+	public void setIngredients(List<String> ingredients) {
+		this.ingredients = ingredients;
+	}
+	public void setAmounts(List<String> amounts) {
+		this.amounts = amounts;
+	}
+	public void setUnits(List<String> units) {
+		this.units = units;
+	}
+	private List<String> units;
 	
 	public String getName() {
 		return name;
@@ -36,39 +50,27 @@ public class RecipeDTO {
 	public void setTags(int[] tags) {
 		this.tags = tags;
 	}
-	public String[] getUtensils() {
+	
+	public List<String> getUtensils() {
 		return utensils;
 	}
-	public void setUtensils(String[] utensils) {
-		this.utensils = utensils;
-	}
-	public String[] getIngredients() {
+	public List<String> getIngredients() {
 		return ingredients;
 	}
-	public void setIngredients(String[] ingredients) {
-		this.ingredients = ingredients;
-	}
-	public String[] getAmounts() {
+	public List<String> getAmounts() {
 		return amounts;
 	}
-	public void setAmounts(String[] amounts) {
-		this.amounts = amounts;
-	}
-	public String[] getUnits() {
+	public List<String> getUnits() {
 		return units;
-	}
-	public void setUnits(String[] units) {
-		this.units = units;
 	}
 	@Override
 	public String toString() {
 		return "RecipeDTO [name=" + name + ", directions=" + directions + ", user=" + user + ", tags="
-				+ Arrays.toString(tags) + ", utensils=" + Arrays.toString(utensils) + ", ingredients="
-				+ Arrays.toString(ingredients) + ", amounts=" + Arrays.toString(amounts) + ", units="
-				+ Arrays.toString(units) + "]";
+				+ Arrays.toString(tags) + "]";
 	}
-	public RecipeDTO(String name, String directions, int user, int[] tags, String[] utensils, String[] ingredients,
-			String[] amounts, String[] units) {
+	
+	public RecipeDTO(String name, String directions, int user, int[] tags, List<String> utensils,
+			List<String> ingredients, List<String> amounts, List<String> units) {
 		super();
 		this.name = name;
 		this.directions = directions;
