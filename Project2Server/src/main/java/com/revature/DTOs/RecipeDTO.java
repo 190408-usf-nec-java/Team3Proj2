@@ -8,28 +8,16 @@ public class RecipeDTO {
 	private String directions;
 	private int user;
 	private int[] tags;
-	/*private List<String> utensils;*/
+	/*private List<String> utensils;
 	private String[] ingredients;
 	private String[] amounts;
 	
-	/*public void setUtensils(List<String> utensils) {
+	public void setUtensils(List<String> utensils) {
 		this.utensils = utensils;
 	}*/
 	
 	public void setUnits(List<String> units) {
 		this.units = units;
-	}
-	public String[] getIngredients() {
-		return ingredients;
-	}
-	public void setIngredients(String[] ingredients) {
-		this.ingredients = ingredients;
-	}
-	public String[] getAmounts() {
-		return amounts;
-	}
-	public void setAmounts(String[] amounts) {
-		this.amounts = amounts;
 	}
 	private List<String> units;
 	
@@ -79,8 +67,9 @@ public class RecipeDTO {
 		this.directions = directions;
 		this.user = user;
 		this.tags = tags;
+		/*
 		this.ingredients = ingredients;
-		this.amounts = amounts;
+		this.amounts = amounts;*/
 		this.units = units;
 	}
 	public RecipeDTO() {
