@@ -28,6 +28,7 @@ export class SearchService {
       }).pipe(map(response => response.body as Array <Recipe>))
       .subscribe(response => {
         response.forEach(element => {
+          console.log('recipe found...');
           this.recipeArray.push(element);
         });
         }, err => {
