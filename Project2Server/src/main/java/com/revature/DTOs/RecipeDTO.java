@@ -7,22 +7,29 @@ public class RecipeDTO {
 	private String name;
 	private String directions;
 	private int user;
-	/*private int[] tags;
-	private List<String> utensils;
-	private List<String> ingredients;
-	private List<String> amounts;
+	private int[] tags;
+	/*private List<String> utensils;*/
+	private String[] ingredients;
+	private String[] amounts;
 	
-	public void setUtensils(List<String> utensils) {
+	/*public void setUtensils(List<String> utensils) {
 		this.utensils = utensils;
-	}
-	public void setIngredients(List<String> ingredients) {
-		this.ingredients = ingredients;
-	}
-	public void setAmounts(List<String> amounts) {
-		this.amounts = amounts;
 	}*/
+	
 	public void setUnits(List<String> units) {
 		this.units = units;
+	}
+	public String[] getIngredients() {
+		return ingredients;
+	}
+	public void setIngredients(String[] ingredients) {
+		this.ingredients = ingredients;
+	}
+	public String[] getAmounts() {
+		return amounts;
+	}
+	public void setAmounts(String[] amounts) {
+		this.amounts = amounts;
 	}
 	private List<String> units;
 	
@@ -44,22 +51,17 @@ public class RecipeDTO {
 	public void setUser(int user) {
 		this.user = user;
 	}
-	/*public int[] getTags() {
+	public int[] getTags() {
 		return tags;
 	}
 	public void setTags(int[] tags) {
 		this.tags = tags;
 	}
 	
-	public List<String> getUtensils() {
+	/*public List<String> getUtensils() {
 		return utensils;
-	}
-	public List<String> getIngredients() {
-		return ingredients;
-	}
-	public List<String> getAmounts() {
-		return amounts;
 	}*/
+	
 	public List<String> getUnits() {
 		return units;
 	}
@@ -69,17 +71,16 @@ public class RecipeDTO {
 				+ "]";
 	}
 	
-	public RecipeDTO(String name, String directions, int user, int[] tags, List<String> utensils,
-			List<String> ingredients, List<String> amounts, List<String> units) {
+	
+	public RecipeDTO(String name, String directions, int user, int[] tags, String[] ingredients, String[] amounts,
+			List<String> units) {
 		super();
 		this.name = name;
 		this.directions = directions;
 		this.user = user;
-		/*
 		this.tags = tags;
-		this.utensils = utensils;
 		this.ingredients = ingredients;
-		this.amounts = amounts;*/
+		this.amounts = amounts;
 		this.units = units;
 	}
 	public RecipeDTO() {
