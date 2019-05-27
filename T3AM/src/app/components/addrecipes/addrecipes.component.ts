@@ -11,14 +11,11 @@ import { Users } from 'src/app/classes/users';
 })
 export class AddrecipesComponent implements OnInit {
   name = ' ' ;
-  ingredients: ' ';
+ 
   directions  = ' ';
   user = JSON.parse(localStorage.getItem('token')).userID;
   tags: number;
-  utensils: number;
-  amounts =  ' ';
-  units = ' ';
-
+ 
   submitSucceeded = undefined;
   sumbitResponse: Subscription;
   laststatus = 200;
@@ -36,9 +33,8 @@ export class AddrecipesComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.name, this.ingredients , this.directions);
-    this.addrecipeService.add(this.name, this.directions, this.user, 
-      this.tags, this.utensils, this.ingredients ,this.amounts, this.units).subscribe(result => {
+    console.log(this.name,  this.directions);
+    this.addrecipeService.add(this.name, this.directions, this.user, this.tags ).subscribe(result => {
         this.submitSucceeded = true;
         alert('Request has submitted');
       }, error => {

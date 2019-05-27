@@ -11,21 +11,14 @@ export class AddrecipesService {
 
   constructor(private httpClient: HttpClient) { }
 
-  add(name: string, directions: string, user: number, tags: number, utensils: number, ingredients: string, 
-     amounts: string, units: string): Observable<any> {
+  add(name: string, directions: string, user: number, tags: number): Observable<any>{ 
     const payload = {
       name: name,
-      directions,
+      directions:directions,
       user: user,
       tags: tags,
-      utensils: utensils,
-      ingredients: ingredients,
-      amounts: amounts,
-      units: units
-      
+      };
 
-    };
-
-    return this.httpClient.post('http://localhost:8081/recipe/create/', payload);
+return this.httpClient.post('http://localhost:8081/recipe/create/', payload);
 }
 }
