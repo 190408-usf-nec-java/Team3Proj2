@@ -1,3 +1,22 @@
 <p>
-  addrecipes works!
+
+    
+
 </p>
+
+<textarea id="name" [(ngModel)]="name" placeholder = "recipe name" >Recipe Name</textarea>
+
+<textarea id="ingredients" [(ngModel)]="ingredients" placeholder = "ingredients" >ingredients</textarea>
+
+<textarea id="directions" [(ngModel)]="directions" placeholder = "Directions" >directions</textarea>
+
+<input type="text" class="form-control" id = "utensils"  [(ngModel)] = "utensils" placeholder="utensils">
+
+
+<input type="text" class="form-control" id = "amounts"  [(ngModel)] = "amounts" placeholder="Amount">
+<input type="text" class="form-control" id = "units"  [(ngModel)] = "units" placeholder="units">
+<p>hello {{user}}</p>
+
+<button (click) ="submit()">Submit</button>
+
+ 
