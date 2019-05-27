@@ -12,7 +12,7 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-  
+
   searched = '';
   searched2 = '';
   searchResponse: Subscription;
@@ -25,12 +25,12 @@ export class SearchComponent implements OnInit {
     console.log('clearing session storage...');
     sessionStorage.clear();
     console.log('session storage cleard...');
-  }  
-  
+  }
+
   tokenValid() {
     return this.token;
   }
-  
+
   search(search: string): void {
     const payload = {
       recipe: search
@@ -43,6 +43,7 @@ export class SearchComponent implements OnInit {
       }).pipe(map(response => response.body as Array <Recipe>))
       .subscribe(response => {
         response.forEach(element => {
+          console.log('recipe found...');
           this.recipeArray.push(element);
         });
         }, err => {
@@ -66,7 +67,7 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.search('Scrambled Eggs');
+    this.search('eggs');
   }
 
 }
